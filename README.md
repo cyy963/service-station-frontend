@@ -44,6 +44,33 @@ This is a project based on Z, a fuel provider in New Zealand. It allows users to
    ```
    The application should now be running at http://localhost:5173
 
+## Branching Workflow
+
+Create own branch for development:
+
+1. **Create new branch:** 
+```sh
+git checkout -b your-branch-name
+```
+
+2. **Push your branch to the repo:**
+```sh
+git push origin your-branch-name
+```
+
+3. **Make changes and commit:**
+```sh
+git add .
+git commit -m "Your commit message"
+```
+
+4. **Push changes to your branch:**
+```sh
+git push origin your-branch-name
+```
+
+5. **Create pull request for review**
+
 
 ## Routing
 
