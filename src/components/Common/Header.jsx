@@ -5,7 +5,7 @@ function Header() {
   return (
     <header>
       <nav>
-        <ul>
+        <ul style={{display:"flex", justifyContent:"center", alignItems:"center", gap:"50px"}}>
           <li>
             <Link to="/">Home</Link>
           </li>

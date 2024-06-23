@@ -1,0 +1,15 @@
+.pagebody{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.dataMap{
+  display: flex;
+  justify-content: center;
+}
+img{
+  width: 55%;
+}
