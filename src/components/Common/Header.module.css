@@ -9,7 +9,7 @@
   border-bottom: 1px solid #ddd;
   width: 100%;
   font-family: 'Inter', sans-serif;
-  box-sizing: border-box; /* Ensures padding and border are included in the width, stops header forcing page wider */
+  box-sizing: border-box;
 }
 
 .logoContainer {
@@ -33,16 +33,17 @@
   padding: 10px;
   cursor: pointer;
   font-weight: 700;
+  position: relative;
 }
 
 .arrow {
-  font-size: 1em; /* size of the arrow */
+  font-size: 1em;
   margin-left: 5px;
   display: inline-block;
-  line-height: normal; 
-  transform: translateY(-4px); /* Adjust to move arrow slightly higher - negative up, positive down */
+  line-height: normal;
+  transform: translateY(-4px);
   font-weight: 700;
- text-shadow: 0 0 1px black; /* hack to adjust boldness  */
+  text-shadow: 0 0 1px black;
 }
 
 .actions {
@@ -71,4 +72,73 @@
 .searchIcon {
   font-size: 1.2em;
   color: black;
+}
+
+.active {
+  color: #FFA13A;
+  border-bottom: 3px solid #ED560E;
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #ddd;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdownMenu {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.productsServices {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 150px; /* Adjust for more space between drop down menu sections */
+}
+
+.productsServices h1 {
+  font-size: 2em; 
+  color: #ED560E; 
+  margin: 0;
+}
+
+.arrowCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(to bottom, #ED560E, #C6450B);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+
+.rightArrow {
+  font-size: 1.2em;
+}
+
+.menuItems {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+  font-weight: bold; 
+}
+
+.smallArrow {
+  font-size: 1em;
+  margin-left: 5px;
 }
