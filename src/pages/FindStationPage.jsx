@@ -10,7 +10,6 @@ function FindStationPage() {
       <Header />
       <StationData />
       
-      <Footer />
     </div>
   );
 }

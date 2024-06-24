@@ -4,19 +4,20 @@ import FindStationPage from "./pages/FindStationPage";
 import JourneyPlannerPage from "./pages/JourneyPlannerPage";
 import StoreInfoPage from "./pages/StoreInfoPage";
 import LandingPage from "./pages/LandingPage";
-import Header from "./components/Common/Header";
-import Footer from "./components/Common/Footer";
+
 
 function App() {
   return (
-    <Router>      
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/find-station" element={<FindStationPage />} />
-        <Route path="/journey-planner" element={<JourneyPlannerPage />} />
-        <Route path="/store-information" element={<StoreInfoPage />} />
-      </Routes>      
-    </Router>
+    <>
+           
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/find-station" element={<FindStationPage />} />
+          <Route path="/journey-planner" element={<JourneyPlannerPage />} />
+          <Route path="/store-information" element={<StoreInfoPage />} />
+        </Routes>      
+      
+    </>
   );
 }
 
