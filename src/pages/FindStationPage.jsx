@@ -9,13 +9,7 @@ function FindStationPage() {
   return (
     <div className={styles.pageBody}>
       <Header />
-      <div className={styles.filters}>
-
-      </div>
-      <div className={styles.dataMap}>
-        <StationData />
-        <img src={map} alt="map" />
-      </div>
+      <StationData />
       
       <Footer />
     </div>
