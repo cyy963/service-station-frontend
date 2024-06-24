@@ -47,6 +47,7 @@ const Header = () => {
             onClick={() => handleNavClick(item)}
           >
             {item} <span className={styles.arrow}>⌄</span>
+            {activeNav === item && <div className={styles.underline}></div>}
           </div>
         ))}
       </nav>
@@ -58,7 +59,7 @@ const Header = () => {
         </div>
       </div>
       {activeNav && (
-        <div className={styles.dropdownContent}>
+        <div className={`${styles.dropdownContent} ${styles.activeDropdown}`}>
           {activeNav === "Products and Services" && (
             <div className={styles.dropdownMenu}>
               <div className={styles.productsServices}>
@@ -85,7 +86,7 @@ const Header = () => {
               </div>
             </div>
           )}
-          {/* Put other blocks for other nav links here */}
+          {/* other blocks for other nav links here when first one sorted  */}
         </div>
       )}
     </header>
