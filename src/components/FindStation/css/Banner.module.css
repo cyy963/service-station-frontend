@@ -1,0 +1,85 @@
+
+
+.banner {
+  height: 340px;
+  width: 100%;
+  background-image: url('/images/banner.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ensure content is aligned at the start */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.content{
+  padding: 2vh;
+  flex-wrap: wrap;
+  margin-left: 6vw;
+
+}
+.buttons {
+  display: flex;
+  gap: 15px; 
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.stackInput{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+  .buttonContainer {
+    display: flex;
+   flex-direction: row;
+   align-items: center;
+  }
+  
+  .submitButton {
+    height: 5vh;
+    font-size: 20px;
+    background-color: #ED560E;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+.searchInput {
+  width: 40vw;
+  height: 5vh;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.stationButton {
+  height: 5vh;
+  font-size: 20px;
+  background-color: #ED560E; 
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none;
+  border-radius: 10px; /* Adjust as desired */
+  cursor: pointer;
+
+}
+
+.stationButton.clicked {
+  background-color: #FFFFFF; /* Adjust color as needed */
+  color: #ED560E;
+  /* Adjust hover color */
+}
