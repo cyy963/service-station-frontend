@@ -9,12 +9,14 @@ import {
   faChevronDown,
   faChevronUp,
   faMagnifyingGlass,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const [activeNav, setActiveNav] = useState("");
   const [closing, setClosing] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const dropdownRef = useRef(null);
   const searchRef = useRef(null);
 
@@ -48,6 +50,10 @@ const Header = () => {
         setActiveNav("");
       }
     }
+  };
+
+  const handleClearSearch = () => {
+    setSearchText("");
   };
 
   useEffect(() => {
@@ -290,7 +296,17 @@ const Header = () => {
               type="text"
               className={styles.searchInput}
               placeholder="Search..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
             />
+            {searchText && (
+              <button
+                className={styles.clearButton}
+                onClick={handleClearSearch}
+              >
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            )}
           </div>
         </div>
       </div>
