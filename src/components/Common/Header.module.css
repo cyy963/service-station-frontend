@@ -20,6 +20,7 @@
 
 .logo {
   height: 70px;
+  width: auto; /* Maintain aspect ratio */
 }
 
 .nav {
@@ -243,7 +244,7 @@
   border-radius: 5px;
   padding: 5px;
   width: 100%;
-  position: relative; /* clear button positioned correctly */
+  position: relative; 
 }
 
 .searchInput {
