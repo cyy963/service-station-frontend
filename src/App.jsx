@@ -20,8 +20,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Header />
+    <Router>      
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route

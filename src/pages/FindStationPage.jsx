@@ -1,27 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styles from "./FindStationPage.module.css";
+import styles from './FindStationPage.module.css'
+import StationData from '../components/Common/StationData'
+import Header from '../components/Common/Header'
+import Footer from '../components/Common/Footer'
+
+import { APIProvider } from '@vis.gl/react-google-maps'
 
 const FindStationPage = ({ stores }) => {
   return (
-    <div className={styles.findStationPage}>
-      <h1>Find a Station</h1>
-      <ul>
-        {stores.map((store) => (
-          <li key={store._id} className={styles.stationItem}>
-            <Link
-              to={`/store-information/${store._id}`}
-              className={styles.stationLink}
-            >
-              {store.name}
-            </Link>
-            <p>{store.address}</p>
-            <p>Hours: {store.hours}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+    <div className={styles.pageBody}>
+      <Header />
+      <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_KEY}>
+        <StationData />
+      </APIProvider>
 
-export default FindStationPage;
+      <Footer />
+    </div>
+  )
+}
+
+export default FindStationPage

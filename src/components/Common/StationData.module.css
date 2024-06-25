@@ -1,0 +1,136 @@
+
+.bg{
+  display: flex;
+  justify-content: flex-end;
+  width: 45%;
+  height: 1100px;
+  
+}
+.stationsContainer{
+  height: 1000px;
+  width: 550px;
+  overflow-y: scroll;
+  
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  /* scrollbar-color: #ED560E #F1F1F1;
+  scrollbar-width: 17px; */
+}
+/* scrollbar */
+.stationsContainer::-webkit-scrollbar {
+  width: 17px;
+  border-radius: 17px;
+}
+.stationsContainer::-webkit-scrollbar-thumb {
+  border-radius: 25px;
+  background-color: #ED560E;
+}
+.stationsContainer::-webkit-scrollbar-track {
+  background-color: #F1F1F1;
+  border-radius: 25px;
+}
+
+.stationsContainer *{
+  font-family: "Inter", sans-serif;
+  
+  
+}
+.station {
+  margin-bottom: 20px;
+  border-bottom: 0.2px solid #585967;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.name{
+  color: #1E196A;
+}
+.address{
+  font-weight: 600;
+}
+.hoursContainer{
+  font-weight: 600;
+}
+
+.dropdownButton{
+  all: unset;
+  font-weight: 600;
+}
+.servicesContainer{
+  font-weight: 600;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+}
+.service{
+  background-color: #FF5200;
+  color: white;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+.pricesContainer{
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+}
+.dropdownButton{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dropdownButton img{
+  scale: 0.9;
+}
+.fuelprices{
+  margin-top: 10px;
+  font-weight: 600;
+}
+.pricesContainer >*{
+  font-size: 15px;
+  font-weight: 600;
+  
+}
+.pricesContainer img{
+  height: 18px;
+  width: auto;
+}
+.premPrice, .unleadPrice, .dieselPrice{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.premPrice{
+  font-size: 16px;
+  font-weight: 800;
+  color: #CD3636;
+}
+.unleadPrice{
+  font-size: 16px;
+  font-weight: 800;
+  color: #286732;
+}
+.dieselPrice{
+  font-size: 16px;
+  font-weight: 800;
+  color: #000000;
+}
+
+
+.dataMap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+img{
+  width: 55%;
+}
