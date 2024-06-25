@@ -1,41 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
 .footer {
-  background-color: #f8f8f8;
-  padding: 40px 0;
+  background-color: #ffffff; 
+  padding: 100px 40px 120px 40px; /* increase padding for more height */
+  width: 100%; 
+  font-family: 'Inter', sans-serif; 
 }
 
 .footerContainer {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  max-width: 1400px; /* reduce max-width for more room on sides */
+  margin: 0 auto; 
 }
 
 .logoContainer {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
 }
 
 .logo {
-  height: 100px;
+  height: 80px; /* size of logo */
 }
 
 .linksContainer {
-  flex: 2;
+  flex: 4;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; 
+}
+
+.footerSection {
+  margin-right: 20px;
+}
+
+.footerSection h4 {
+  font-weight: bold; 
+  font-size: 1.2em; 
+  margin-bottom: 20px; /* space below headings */
+}
+
+.footerSection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footerSection li {
+  font-weight: bold; 
+  font-size: 0.9em; 
+  margin-bottom: 20px; 
+}
+
+.footerSection li a {
+  text-decoration: none;
+  color: #ED560E; 
+}
+
+.footerSection li a:hover {
+  text-decoration: underline;
 }
 
 .contactContainer {
   flex: 1;
-  text-align: right;
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-end; 
+  text-align: right; 
 }
 
 .contactButton {
   background: linear-gradient(45deg, #ED560E, #FFA13A);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 15px 30px; 
   font-size: 16px;
+  font-weight: bold; 
   cursor: pointer;
   position: relative;
+  border-radius: 25px; 
+  margin-bottom: 10px; 
 }
 
 .locationDot {
@@ -47,14 +92,53 @@
 }
 
 .socialMediaIcons {
-  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end; 
+  width: 100%; 
+  margin-top: 10px; 
 }
 
 .socialIcon {
   background-color: #ED560E;
   color: white;
   border-radius: 50%;
-  padding: 10px;
+  padding: 8px; /* size of social media circles */
   margin: 0 5px;
-  font-size: 16px;
+  font-size: 14px; 
+}
+
+.footerBottomContainer {
+  max-width: 1400px; 
+  margin: 60px auto 0 auto; 
+  padding: 0 40px; 
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+  color: #585967; 
+}
+
+.footerBottomLeft {
+  display: flex;
+  gap: 20px; /* Space between links */
+}
+
+.footerBottomLeft a {
+  color: #585967; 
+  text-decoration: none; 
+}
+
+
+.footerBottomRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footerCircle {
+  height: 20px;
+  width: 20px;
 }

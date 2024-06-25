@@ -6,6 +6,8 @@ import JourneyPlannerPage from "./pages/JourneyPlannerPage";
 import StoreInfoPage from "./pages/StoreInfoPage";
 import LandingPage from "./pages/LandingPage";
 
+
+
 function App() {
   return (
     <>
@@ -15,6 +17,7 @@ function App() {
         <Route path="/journey-planner" element={<JourneyPlannerPage />} />
         <Route path="/store-information" element={<StoreInfoPage />} />
       </Routes>
+      
     </>
   );
 }
