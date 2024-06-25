@@ -27,6 +27,9 @@ const Header = () => {
       }, 500); // Duration of the closing transition
     } else {
       setActiveNav(nav);
+      if (searchOpen) {
+        setSearchOpen(false);
+      }
     }
   };
 
@@ -40,18 +43,20 @@ const Header = () => {
       }, 500); 
     } else {
       setSearchOpen(true);
+      if (activeNav) {
+        setActiveNav("");
+      }
     }
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        (dropdownRef.current &&
-          !dropdownRef.current.contains(event.target) &&
-          !event.target.closest(`.${styles.dropdown}`)) ||
-        (searchRef.current &&
-          !searchRef.current.contains(event.target) &&
-          !event.target.closest(`.${styles.search}`))
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        !event.target.closest(`.${styles.dropdown}`) &&
+        !event.target.closest(`.${styles.search}`) &&
+        !event.target.closest(`.${styles.searchDropdown}`)
       ) {
         if (activeNav) {
           setClosing(true);
