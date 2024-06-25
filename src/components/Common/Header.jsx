@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import logo from "../../assets/z-logo.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -111,7 +112,9 @@ const Header = () => {
         ))}
       </nav>
       <div className={styles.actions}>
-        <button className={styles.findStationButton}>Find A Station</button>
+        <Link to="/find-station">
+          <button className={styles.findStationButton}>Find A Station</button>
+        </Link>
         <div className={styles.search} onClick={handleSearchClick}>
           <span>Search</span>
           <FontAwesomeIcon
