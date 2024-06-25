@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import styles from './FiltersBar.module.css';
 
-const CustomDropdown = ({ options, value, onChange, placeholder }) => {
+const CustomDropdown = ({ options, value, onChange, className }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
+  const handleToggle = () => setIsOpen(!isOpen);
 
   const handleOptionClick = (option) => {
     if (!option.disabled) {
@@ -18,7 +16,7 @@ const CustomDropdown = ({ options, value, onChange, placeholder }) => {
   const selectedOption = options.find(option => option.value === value);
 
   return (
-    <div className={styles.dropdown}>
+    <div className={`${styles.dropdown} ${className}`}>
       <div className={styles.dropdownSelect} onClick={handleToggle}>
         {selectedOption ? selectedOption.label : placeholder}
       </div>
