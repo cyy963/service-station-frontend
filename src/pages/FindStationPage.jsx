@@ -1,17 +1,24 @@
-import React from "react";
-import styles from "./FindStationPage.module.css"
-import StationData from "../components/Common/StationData";
-import Header from "../components/Common/Header";
-import Footer from "../components/Common/Footer";
+
+import styles from './FindStationPage.module.css'
+import StationData from '../components/Common/StationData'
+import Header from '../components/Common/Header'
+import Footer from '../components/Common/Footer'
+
+import { APIProvider } from '@vis.gl/react-google-maps'
 
 function FindStationPage() {
   return (
     <div className={styles.pageBody}>
       <Header />
-      <StationData />
-      
+
+      <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_KEY}>
+        <StationData />
+      </APIProvider>
+
+      <Footer />
+
     </div>
-  );
+  )
 }
 
-export default FindStationPage;
+export default FindStationPage
