@@ -13,7 +13,7 @@ const FiltersBar = ({
   handlePriceSortChange,
 }) => {
   const serviceOptions = [
-    { value: '', label: 'Select a service or services' },
+    { value: '', label: 'Select service/s' },
     { value: 'Car wash', label: 'Car wash', disabled: true },
     { value: 'Z20 carwash', label: 'Food & Drink' },
     { value: 'Food & Drink', label: 'Food & Drink', disabled: true },
@@ -55,37 +55,45 @@ const FiltersBar = ({
   ];
 
   const priceSortOptions = [
-    { value: '', label: 'Sorted by' },
+    { value: '', label: 'Sorted by price' },
     { value: 'Lower price', label: 'Lower price' },
     { value: 'Higher price', label: 'Higher price' },
   ];
 
   return (
     <div className={styles.filtersContainer}>
-      <CustomDropdown 
-        options={serviceOptions} 
-        value={serviceFilter} 
-        onChange={handleServiceFilterChange} 
-        placeholder="Select a service or services" 
-      />
-      <CustomDropdown 
-        options={stationTypeOptions} 
-        value={stationTypeFilter} 
-        onChange={handleStationTypeFilterChange} 
-        placeholder="Select station type" 
-      />
-      <CustomDropdown 
-        options={fuelTypeOptions} 
-        value={fuelTypeFilter} 
-        onChange={handleFuelTypeFilterChange} 
-        placeholder="Select fuel type" 
-      />
-      <CustomDropdown 
+      <div>
+        <p className={styles.filterTitle}>Services</p>
+        <CustomDropdown 
+          options={serviceOptions} 
+          value={serviceFilter} 
+          onChange={handleServiceFilterChange} 
+        />
+      </div>
+      <div>
+        <p className={styles.filterTitle}>Station type</p>
+        <CustomDropdown
+          options={stationTypeOptions} 
+          value={stationTypeFilter} 
+          onChange={handleStationTypeFilterChange}  
+        />
+      </div>
+      <div>
+        <p className={styles.filterTitle}>Fuel Type</p>
+        <CustomDropdown 
+          options={fuelTypeOptions} 
+          value={fuelTypeFilter} 
+          onChange={handleFuelTypeFilterChange} 
+        />
+      </div>      
+      <CustomDropdown
+        className={styles.priceSorter}
         options={priceSortOptions} 
         value={priceSort} 
         onChange={handlePriceSortChange} 
-        placeholder="Sorted by" 
+        
       />
+      
     </div>
   );
 };
