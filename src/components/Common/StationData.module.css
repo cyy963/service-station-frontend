@@ -1,13 +1,17 @@
+.dataMap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .bg{
   display: flex;
   justify-content: flex-end;
   width: 45%;
-  height: 1100px;
-  
+  height: 800px;
 }
 .stationsContainer{
-  height: 1000px;
+  height: 100%;
   width: 620px;
   overflow-y: scroll;
   
@@ -15,6 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
 }
 /* scrollbar */
 .stationsContainer::-webkit-scrollbar {
@@ -32,9 +37,9 @@
 
 .stationsContainer *{
   font-family: "Inter", sans-serif;
-  
-  
+  position: relative;
 }
+
 .station {
   margin-bottom: 20px;
   border-bottom: 0.2px solid #585967;
@@ -123,11 +128,8 @@
 }
 
 
-.dataMap{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+
 img{
   width: 55%;
 }
+

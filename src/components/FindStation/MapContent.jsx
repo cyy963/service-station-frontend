@@ -19,7 +19,7 @@ function MapContent({ form, tog, searchAddress, setAddress, allStations }) {
   return (
     <>
       <Map
-        style={{ width: '100vw', height: '80vh' }}
+        style={{ width: '50vw', height: '800px' }}
         defaultCenter={{ lat: -36.84, lng: 174.76 }}
         defaultZoom={10}
         gestureHandling='greedy'
@@ -42,14 +42,7 @@ function MapContent({ form, tog, searchAddress, setAddress, allStations }) {
           <div></div>
         </AdvancedMarker>
       </Map>
-      {tog ? (
-        <SideBar
-          stationSelector={setSelectedStation}
-          stations={filteredStations}
-        />
-      ) : (
-        <SideBar stationSelector={setSelectedStation} stations={allStations} />
-      )}
+      
     </>
   )
 }

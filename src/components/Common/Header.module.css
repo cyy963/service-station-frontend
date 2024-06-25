@@ -11,7 +11,7 @@
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
   position: relative;
-  z-index: 2;
+  z-index: 50;
 }
 
 .logoContainer {

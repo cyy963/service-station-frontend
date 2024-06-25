@@ -8,7 +8,7 @@ import greenZ from '../../assets/greenZ.png'
 import redZ from '../../assets/redZ.png'
 import blackZ from '../../assets/blackZ.png'
 import FiltersBar from './FiltersBar'
-
+import PriceSorter from './PriceSorter'
 import Banner from '../FindStation/Banner'
 import MapContent from '../FindStation/MapContent'
 
@@ -34,7 +34,8 @@ const StationData = () => {
   const [stations, setStations] = useState([])
   const [dropdownStates, setDropdownStates] = useState({})
   const [hoursDropdownStates, setHoursDropdownStates] = useState({})
-  const [serviceFilter, setServiceFilter] = useState('')
+  
+  const [serviceFilter, setServiceFilter] = useState([])
   const [stationTypeFilter, setStationTypeFilter] = useState('')
   const [fuelTypeFilter, setFuelTypeFilter] = useState('')
   const [priceSort, setPriceSort] = useState('')
@@ -87,14 +88,26 @@ const StationData = () => {
     setPriceSort(value)
   }
 
+  const handleApplyFilters = (filters) => {
+    setServiceFilter(filters.serviceFilter);
+    setStationTypeFilter(filters.stationTypeFilter);
+    setFuelTypeFilter(filters.fuelTypeFilter);
+  };
+
+  const clearFilters = () => {
+    setServiceFilter([]);
+    setStationTypeFilter('');
+    setFuelTypeFilter('');
+  };
+
   const filteredStations = stations
     .filter((station) => {
       // Filter by service
-      if (serviceFilter) {
+      if (serviceFilter.length > 0) {
         const servicesArray = station.services
           .split(',')
           .map((service) => service.trim())
-        if (!servicesArray.includes(serviceFilter)) {
+        if (!serviceFilter.every(service => servicesArray.includes(service))) {
           return false
         }
       }
@@ -138,15 +151,17 @@ const StationData = () => {
         serviceFilter={serviceFilter}
         stationTypeFilter={stationTypeFilter}
         fuelTypeFilter={fuelTypeFilter}
-        priceSort={priceSort}
         handleServiceFilterChange={handleServiceFilterChange}
         handleStationTypeFilterChange={handleStationTypeFilterChange}
         handleFuelTypeFilterChange={handleFuelTypeFilterChange}
-        handlePriceSortChange={handlePriceSortChange}
+        handleApplyFilters={handleApplyFilters}
+        handleClearFilters={clearFilters}
       />
-      <div style={{ display: 'flex' }}>
+      
+      <div style={{ display: 'flex', justifyContent: 'end' }}>
         <div className={styles.bg}>
           <div className={styles.stationsContainer}>
+            <PriceSorter className={styles.priceSorter} onChange={handlePriceSortChange} />
             {filteredStations.map((station) => (
               <div className={styles.station} key={station._id}>
                 <h2 className={styles.name}>{station.name}</h2>

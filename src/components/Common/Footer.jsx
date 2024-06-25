@@ -4,7 +4,7 @@ import Services from "./Services";
 import Contact from "./Contact";
 import SocialMedia from "./SocialMedia";
 import styles from "./Footer.module.css";
-import logo from "../../assets/z-logo.jpeg";
+import logo from "../../assets/z-logo.png";
 
 const Footer = () => {
   return (
