@@ -7,6 +7,7 @@ import StoreInfoPage from "./pages/StoreInfoPage";
 import LandingPage from "./pages/LandingPage";
 import Header from "./components/Common/Header";
 import Footer from "./components/Common/Footer";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
   const [stores, setStores] = useState([]);
