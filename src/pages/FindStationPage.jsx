@@ -6,7 +6,7 @@ import Footer from '../components/Common/Footer'
 
 import { APIProvider } from '@vis.gl/react-google-maps'
 
-function FindStationPage() {
+const FindStationPage = ({ stores }) => {
   return (
     <div className={styles.pageBody}>
       <Header />
