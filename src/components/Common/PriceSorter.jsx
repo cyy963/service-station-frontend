@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './PriceSorter.module.css';
+import filterArrow from '../../assets/filterArrow.png'
+
 
 const PriceSorter = ({ onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +39,10 @@ const PriceSorter = ({ onChange }) => {
   return (
     <div className={styles.priceSorter} ref={dropdownRef}>
       <div className={styles.dropdownSelect} onClick={handleToggle}>
-        {selectedOption ? priceSortOptions.find(opt => opt.value === selectedOption).label : 'Sort by price'}
+        {selectedOption ? priceSortOptions.find(opt => opt.value === selectedOption).label : <span className={styles.placeholder}>
+            Sort by price
+            <img src={filterArrow} alt="icon" className={styles.placeholderIcon} />
+          </span>}
       </div>
       {isOpen && (
         <div className={styles.dropdownOptions}>

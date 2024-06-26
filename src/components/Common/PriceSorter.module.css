@@ -2,7 +2,9 @@
   width: 150px;
   height: 40px;
   position: absolute;
-  right: 5px;
+  right: 52.5%;
+  top: 675px;
+  z-index: 1000;
 }
 
 .dropdownSelect {
@@ -11,7 +13,7 @@
   justify-content: space-between;
   padding: 8px 10px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   border: 1px solid #353535;
   border-radius: 10px;
   background-color: #fff;
@@ -48,4 +50,16 @@
   color: #ccc;
   cursor: default;
   background-color: #e0e0e0;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.placeholderIcon {
+  margin-left: 5px;
+  width: 15px; /* Adjust size as needed */
+  height: auto; /* Adjust size as needed */
 }

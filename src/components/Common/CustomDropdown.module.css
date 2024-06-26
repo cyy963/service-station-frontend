@@ -1,8 +1,9 @@
 .dropdown {
   height: fit-content;
   min-height: 56px;
-  min-width: 200px;
+  min-width: 206px;
   position: relative;
+  z-index: 8000;
 }
 
 .dropdownSelect {
@@ -67,7 +68,7 @@
 }
 
 .dropdownOption:hover {
-  background-color: #f0f0f0;
+  background-color: #ffb998;
 }
 
 .dropdownOption.disabled {

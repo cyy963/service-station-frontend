@@ -44,15 +44,29 @@
 
 .station {
   margin-bottom: 20px;
-  border-bottom: 0.2px solid #585967;
+  border-bottom: 0.1px solid #9ea0b1;
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  padding: 20px;
 }
-
+.station.selected{
+  background-color: #ffcbb775;
+}
 .name{
   color: #1E196A;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+}
+.name:hover{
+  border-bottom: 2px solid #1E196A;
+  cursor: pointer;
+  width: fit-content;
+  
 }
 .address{
   font-weight: 600;

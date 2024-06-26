@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-import logo from "../../assets/z-logo.png";
+import logo from "../../assets/z-logo.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRight,

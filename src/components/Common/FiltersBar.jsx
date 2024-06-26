@@ -36,16 +36,14 @@ const FiltersBar = ({ handleApplyFilters, handleClearFilters }) => {
   ];
 
   const stationTypeOptions = [
-    { value: '', label: 'Select station type' },
     { value: 'Truck Stop', label: 'Truck Stop' },
     { value: 'Service Station', label: 'Service Station' },
   ];
 
   const fuelTypeOptions = [
-    { value: '', label: 'Select fuel type' },
-    { value: 'ZX Premium', label: 'ZX Premium' },
-    { value: 'Z91 Unleaded', label: 'Z91 Unleaded' },
-    { value: 'Z Diesel', label: 'Z Diesel' },
+    { value: 'ZX_Premium', label: 'ZX Premium' },
+    { value: 'Z91_Unleaded', label: 'Z91 Unleaded' },
+    { value: 'Z_Diesel', label: 'Z Diesel' },
   ];
 
   const applyFilters = () => {

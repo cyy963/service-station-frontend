@@ -2,11 +2,14 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './StationData.module.css'
+//graphics
 import downArrow from '../../assets/downArrow.png'
 import rightArrow from '../../assets/rightArrow.png'
 import greenZ from '../../assets/greenZ.png'
 import redZ from '../../assets/redZ.png'
 import blackZ from '../../assets/blackZ.png'
+import { FaExternalLinkAlt } from "react-icons/fa";
+//components
 import FiltersBar from './FiltersBar'
 import PriceSorter from './PriceSorter'
 import Banner from '../FindStation/Banner'
@@ -34,11 +37,11 @@ const StationData = () => {
   const [stations, setStations] = useState([])
   const [dropdownStates, setDropdownStates] = useState({})
   const [hoursDropdownStates, setHoursDropdownStates] = useState({})
-  
   const [serviceFilter, setServiceFilter] = useState([])
   const [stationTypeFilter, setStationTypeFilter] = useState('')
   const [fuelTypeFilter, setFuelTypeFilter] = useState('')
   const [priceSort, setPriceSort] = useState('')
+  const [selectedStationId, setSelectedStationId] = useState(null);
 
   //----map------//
   const [form, setForm] = useState()
@@ -117,12 +120,7 @@ const StationData = () => {
       }
       // Filter by fuel type
       if (fuelTypeFilter) {
-        const fuelTypes = [
-          station.ZX_Premium,
-          station.Z91_Unleaded,
-          station.Z_Diesel,
-        ]
-        if (!fuelTypes.includes(fuelTypeFilter)) {
+        if (!station.hasOwnProperty(fuelTypeFilter)) {
           return false
         }
       }
@@ -148,23 +146,24 @@ const StationData = () => {
       />
 
       <FiltersBar
-        serviceFilter={serviceFilter}
-        stationTypeFilter={stationTypeFilter}
-        fuelTypeFilter={fuelTypeFilter}
-        handleServiceFilterChange={handleServiceFilterChange}
-        handleStationTypeFilterChange={handleStationTypeFilterChange}
-        handleFuelTypeFilterChange={handleFuelTypeFilterChange}
         handleApplyFilters={handleApplyFilters}
         handleClearFilters={clearFilters}
       />
       
       <div style={{ display: 'flex', justifyContent: 'end' }}>
+        <PriceSorter className={styles.priceSorter} onChange={handlePriceSortChange} />
         <div className={styles.bg}>
           <div className={styles.stationsContainer}>
-            <PriceSorter className={styles.priceSorter} onChange={handlePriceSortChange} />
+            <div className={styles.stationCount}>
+              {filteredStations.length} stations found
+            </div>
             {filteredStations.map((station) => (
-              <div className={styles.station} key={station._id}>
-                <h2 className={styles.name}>{station.name}</h2>
+              <div
+                className={`${styles.station} ${selectedStationId === station._id ? styles.selected : ''}`}
+                key={station._id}
+                onClick={() => setSelectedStationId(station._id)}
+              >
+                <h2 className={styles.name}>{station.name}  <FaExternalLinkAlt style={{scale:'0.8'}}/></h2>
                 <p className={styles.address}>{station.address}</p>
                 <p className={styles.hoursContainer}>{station.hours}</p>
                 <div className={styles.dropdown}>
