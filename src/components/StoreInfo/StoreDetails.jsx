@@ -14,7 +14,7 @@ const StoreDetails = ({ store }) => {
 
   useEffect(() => {
     const loader = new Loader({
-      apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+      apiKey: import.meta.env.VITE_GOOGLE_MAPS_KEY,
       version: "weekly",
       libraries: ["marker"], // Add the marker library
     });
@@ -70,12 +70,24 @@ const StoreDetails = ({ store }) => {
   return (
     <div className={styles.storeDetails}>
       <h1>{store.name}</h1>
-      <p>{store.address}</p>
-      <p>Hours: {store.hours}</p>
-      <p>Services: {store.services}</p>
-      <p>ZX Premium: {store.ZX_Premium}</p>
-      <p>Z91 Unleaded: {store.Z91_Unleaded}</p>
-      <p>Z Diesel: {store.Z_Diesel}</p>
+      <p>
+        <strong>Address:</strong> {store.address}
+      </p>
+      <p>
+        <strong>Hours:</strong> {store.hours}
+      </p>
+      <p>
+        <strong>Services:</strong> {store.services}
+      </p>
+      <p>
+        <strong>ZX Premium:</strong> ${store.ZX_Premium}
+      </p>
+      <p>
+        <strong>Z91 Unleaded:</strong> ${store.Z91_Unleaded}
+      </p>
+      <p>
+        <strong>Z Diesel:</strong> ${store.Z_Diesel}
+      </p>
       <div className={styles.mapContainer}>
         <div ref={mapRef} style={containerStyle}></div>
       </div>

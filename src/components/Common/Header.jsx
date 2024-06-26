@@ -21,13 +21,13 @@ const Header = () => {
   const searchRef = useRef(null);
 
   const handleNavClick = (nav, event) => {
-    event.stopPropagation(); // Stop the click event from propagating
+    event.stopPropagation();
     if (activeNav === nav) {
       setClosing(true);
       setTimeout(() => {
         setActiveNav("");
         setClosing(false);
-      }, 500); // Duration of the closing transition
+      }, 500);
     } else {
       setActiveNav(nav);
       if (searchOpen) {
@@ -37,13 +37,13 @@ const Header = () => {
   };
 
   const handleSearchClick = (event) => {
-    event.stopPropagation(); 
+    event.stopPropagation();
     if (searchOpen) {
       setClosing(true);
       setTimeout(() => {
         setSearchOpen(false);
         setClosing(false);
-      }, 500); 
+      }, 500);
     } else {
       setSearchOpen(true);
       if (activeNav) {
@@ -70,14 +70,14 @@ const Header = () => {
           setTimeout(() => {
             setActiveNav("");
             setClosing(false);
-          }, 500); 
+          }, 500);
         }
         if (searchOpen) {
           setClosing(true);
           setTimeout(() => {
             setSearchOpen(false);
             setClosing(false);
-          }, 500); 
+          }, 500);
         }
       }
     };
@@ -92,7 +92,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
-        <img src={logo} alt="Logo" className={styles.logo} />
+        <Link to="/">
+          <img src={logo} alt="Logo" className={styles.logo} />
+        </Link>
       </div>
       <nav className={styles.nav}>
         {[
