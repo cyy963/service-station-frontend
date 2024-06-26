@@ -37,11 +37,13 @@ const StationData = () => {
   const [stations, setStations] = useState([])
   const [dropdownStates, setDropdownStates] = useState({})
   const [hoursDropdownStates, setHoursDropdownStates] = useState({})
+  const [selectedStationId, setSelectedStationId] = useState(null);
+
   const [serviceFilter, setServiceFilter] = useState([])
   const [stationTypeFilter, setStationTypeFilter] = useState('')
   const [fuelTypeFilter, setFuelTypeFilter] = useState('')
   const [priceSort, setPriceSort] = useState('')
-  const [selectedStationId, setSelectedStationId] = useState(null);
+
 
   //----map------//
   const [form, setForm] = useState()
