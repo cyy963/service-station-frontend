@@ -1,0 +1,22 @@
+.fuelPrices {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.fuelType {
+  text-align: center;
+  flex: 1;
+}
+
+.fuelImage {
+  width: 50px; /* Adjust width as necessary */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto; /* Center the images */
+}
+
+.fuelType p {
+  margin-top: 10px; /* Add some space between image and price */
+  font-weight: bold; /* Make the price text bold */
+}

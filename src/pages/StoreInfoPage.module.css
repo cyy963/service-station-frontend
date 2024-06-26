@@ -1,3 +1,119 @@
 .storeInfoPage {
   padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.topSection {
+  display: flex;
+}
+
+.leftSide {
+  flex: 1;
+  padding: 20px;
+}
+
+.rightSide {
+  flex: 1;
+  padding: 20px;
+}
+
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.storeDetails {
+  margin-bottom: 20px;
+}
+
+.addressSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address {
+  font-weight: bold;
+}
+
+.directionsButton {
+  background: linear-gradient(to right, #ED560E, #FFA13A);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.fuelPrices {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.fuelType {
+  text-align: center;
+}
+
+.mapContainer {
+  margin-bottom: 20px;
+}
+
+.storeHours {
+  margin-top: 20px;
+}
+
+.servicesSection {
+  margin-top: 20px;
+}
+
+.servicesTitle {
+  color: #ED560E;
+}
+
+.findOutMoreButton {
+  background: linear-gradient(to right, #ED560E, #FFA13A);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.servicesList {
+  margin-top: 20px;
+}
+
+.serviceItem {
+  margin-bottom: 20px;
+}
+
+.serviceDetail {
+  color: blue;
+}
+
+.infoColumns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.infoColumn {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.infoHeader {
+  color: blue;
+  font-weight: bold;
+}
+
+.downloadButton,
+.learnMoreButton {
+  background: linear-gradient(to right, #ED560E, #FFA13A);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
 }
