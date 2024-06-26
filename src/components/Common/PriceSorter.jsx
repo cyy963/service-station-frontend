@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import styles from './PriceSorter.module.css';
 import filterArrow from '../../assets/filterArrow.png'
 
-
 const PriceSorter = ({ onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');

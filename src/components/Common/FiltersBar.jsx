@@ -36,8 +36,8 @@ const FiltersBar = ({ handleApplyFilters, handleClearFilters }) => {
   ];
 
   const stationTypeOptions = [
-    { value: 'Truck Stop', label: 'Truck Stop' },
-    { value: 'Service Station', label: 'Service Station' },
+    { value: 'truck stop', label: 'Truck Stop' },
+    { value: 'service station', label: 'Service Station' },
   ];
 
   const fuelTypeOptions = [

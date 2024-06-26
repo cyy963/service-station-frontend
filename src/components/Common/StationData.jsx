@@ -87,7 +87,7 @@ const StationData = () => {
         }
       }
       // Filter by station type
-      if (stationTypeFilter && station.type !== stationTypeFilter) {
+      if (stationTypeFilter && station.station_type !== stationTypeFilter) {
         return false
       }
       // Filter by fuel type
@@ -129,6 +129,11 @@ const StationData = () => {
     tog,
   ]);
     
+  function handleSelectStation ({position, _id}) {
+    setSelectedStation(position)
+    setSelectedStationId(_id)
+  }
+
   return (
     <div className={styles.filterDataMap}>
       <Banner
@@ -143,18 +148,17 @@ const StationData = () => {
         handleClearFilters={clearFilters}
       />
       
-      <div style={{ display: 'flex', justifyContent: 'end' }}>
+      <div style={{ display: 'flex', justifyContent: 'end', borderBottom:'1px solid grey' }}>
         <PriceSorter className={styles.priceSorter} onChange={handlePriceSortChange} />
+        <div className={styles.stationCount}> {filterStations.length} stations found </div>
         <div className={styles.bg}>
           <div className={styles.stationsContainer}>
-            <div className={styles.stationCount}>
-              {filterStations.length} stations found
-            </div>
+            
             {filterStations.map((station) => (
               <div
                 className={`${styles.station} ${selectedStationId === station._id ? styles.selected : ''}`}
                 key={station._id}
-                onClick={() => setSelectedStationId(station._id)}
+                onClick={() => handleSelectStation(station)}
               >
                 <h2 className={styles.name}>{station.name}  <FaExternalLinkAlt style={{scale:'0.8'}}/></h2>
                 <p className={styles.address}>{station.address}</p>
