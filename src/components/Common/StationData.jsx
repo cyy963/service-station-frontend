@@ -15,24 +15,6 @@ import PriceSorter from './PriceSorter'
 import Banner from '../FindStation/Banner'
 import MapContent from '../FindStation/MapContent'
 
-const stations2 = [
-  {
-    name: 'northshore 1',
-    position: {
-      lat: -36.8088951976568,
-      lng: 174.73808064878497,
-    },
-  },
-  {
-    name: 'northshore 2',
-    position: { lat: -36.79013435905915, lng: 174.74687215436307 },
-  },
-  {
-    name: 'mt roskill ',
-    position: { lat: -36.906357360934656, lng: 174.7723480293113 },
-  },
-]
-
 const StationData = () => {
   const [stations, setStations] = useState([])
   const [dropdownStates, setDropdownStates] = useState({})
@@ -46,9 +28,13 @@ const StationData = () => {
 
 
   //----map------//
-  const [form, setForm] = useState()
-  const [tog, setTog] = useState(true)
-  const [searchAddress, setSearchAddress] = useState()
+  const [form, setForm] = useState();
+  const [tog, setTog] = useState(false);
+  const [searchAddress, setSearchAddress] = useState();
+  const [selectedStation, setSelectedStation] = useState();
+  const [filterStations, setFilterStations] = useState([]);
+
+  const [filteredStations, setFilteredStations] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,24 +56,7 @@ const StationData = () => {
     }))
   }
 
-  const toggleHoursDropdown = (stationId) => {
-    setHoursDropdownStates((prevStates) => ({
-      ...prevStates,
-      [stationId]: !prevStates[stationId],
-    }))
-  }
 
-  const handleServiceFilterChange = (value) => {
-    setServiceFilter(value)
-  }
-
-  const handleStationTypeFilterChange = (value) => {
-    setStationTypeFilter(value)
-  }
-
-  const handleFuelTypeFilterChange = (value) => {
-    setFuelTypeFilter(value)
-  }
 
   const handlePriceSortChange = (value) => {
     setPriceSort(value)
@@ -105,7 +74,8 @@ const StationData = () => {
     setFuelTypeFilter('');
   };
 
-  const filteredStations = stations
+  function applyAllFilters(stationArray) {
+    return stationArray
     .filter((station) => {
       // Filter by service
       if (serviceFilter.length > 0) {
@@ -137,7 +107,28 @@ const StationData = () => {
         return 0
       }
     })
+  }
 
+  useEffect(() => {
+    if (tog) {
+      if (filteredStations && filteredStations.length > 0) {
+        setFilterStations(applyAllFilters(filteredStations));
+      } else {
+        setFilterStations(applyAllFilters(stations));
+      }
+    } else {
+      setFilterStations(applyAllFilters(stations));
+    }
+  }, [
+    filteredStations,
+    stations,
+    fuelTypeFilter,
+    priceSort,
+    serviceFilter,
+    stationTypeFilter,
+    tog,
+  ]);
+    
   return (
     <div className={styles.filterDataMap}>
       <Banner
@@ -157,9 +148,9 @@ const StationData = () => {
         <div className={styles.bg}>
           <div className={styles.stationsContainer}>
             <div className={styles.stationCount}>
-              {filteredStations.length} stations found
+              {filterStations.length} stations found
             </div>
-            {filteredStations.map((station) => (
+            {filterStations.map((station) => (
               <div
                 className={`${styles.station} ${selectedStationId === station._id ? styles.selected : ''}`}
                 key={station._id}
@@ -218,7 +209,10 @@ const StationData = () => {
         </div>
 
         <MapContent
-          allStations={stations2}
+          setFilteredStations={setFilteredStations}
+          setSelectedStation={setSelectedStation}
+          selectedStation={selectedStation}
+          allStations={stations}
           form={form}
           tog={tog}
           searchAddress={searchAddress}
@@ -230,3 +224,22 @@ const StationData = () => {
 }
 
 export default StationData
+
+  // const toggleHoursDropdown = (stationId) => {
+  //   setHoursDropdownStates((prevStates) => ({
+  //     ...prevStates,
+  //     [stationId]: !prevStates[stationId],
+  //   }))
+  // }
+
+  // const handleServiceFilterChange = (value) => {
+  //   setServiceFilter(value)
+  // }
+
+  // const handleStationTypeFilterChange = (value) => {
+  //   setStationTypeFilter(value)
+  // }
+
+  // const handleFuelTypeFilterChange = (value) => {
+  //   setFuelTypeFilter(value)
+  // }
