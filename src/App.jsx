@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/find-station" element={<FindStationPage />} />
         <Route path="/journey-planner" element={<JourneyPlannerPage />} />
-        <Route path="/store-information" element={<StoreInfoPage />} />
+        <Route path="/store/:id" element={<StoreInfoPage />} />
       </Routes>
       
     </>
