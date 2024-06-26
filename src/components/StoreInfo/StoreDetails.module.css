@@ -1,11 +1,28 @@
 .storeDetails {
   margin-bottom: 20px;
+  position: relative;
+  z-index: 1; /* above other elements */
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  color: #c4c4c4;
+  font-size: 0.8rem; 
+  text-decoration: none;
+  margin-bottom: 10px; 
+  position: relative;
+  z-index: 2; /* above other elements */
+}
+
+.backLink span {
+  margin-left: 5px; 
 }
 
 .storeDetails h1 {
   font-size: 3.5rem; /* station name */
   margin-bottom: 40px; 
-  margin-top: 50px;
+  margin-top: 70px;
   margin-left: 80px;
 }
 
@@ -19,15 +36,15 @@
 .address {
   font-weight: bold;
   font-size: 0.9rem; 
-  margin-right: 60px; 
+  margin-right: 60px;
   max-width: 200px; 
-  white-space: normal; /* wrapping */
+  white-space: normal;
 }
 
 .getDirectionsButton {
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #ED560E, #FFA13A);
+  background: linear-gradient(to right, #ed560e, #ffa13a);
   border: none;
   color: white;
   padding: 10px 20px;
