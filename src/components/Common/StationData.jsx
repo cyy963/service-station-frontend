@@ -29,6 +29,7 @@ const StationData = () => {
   const [filterStations, setFilterStations] = useState([])
 
   const [filteredStations, setFilteredStations] = useState([])
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -140,13 +141,6 @@ const StationData = () => {
         setTog={setTog}
         setForm={setForm}
       />
-      <button
-        onClick={() => {
-          console.log(tog, stations)
-        }}
-      >
-        check
-      </button>
 
       <FiltersBar
         serviceFilter={serviceFilter}
