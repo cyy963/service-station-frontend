@@ -1,22 +1,23 @@
 .fuelPrices {
   display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+  justify-content: flex-start; /* Align to the left */
+  align-items: center;
+  margin-bottom: 20px; 
+  margin-left: 60px; 
+  margin-top: 50px;
 }
 
 .fuelType {
   text-align: center;
-  flex: 1;
+    margin-right: 40px; /* Increases the gap between the fuel types */
 }
 
-.fuelImage {
-  width: 50px; /* Adjust width as necessary */
-  height: auto; /* Maintain aspect ratio */
-  display: block;
-  margin: 0 auto; /* Center the images */
+.fuelType img {
+  width: 120px; /* Increases image size */
+  height: 120px;
 }
 
 .fuelType p {
-  margin-top: 10px; /* Add some space between image and price */
-  font-weight: bold; /* Make the price text bold */
+  margin-top: 5px;
+  font-weight: bold;
 }

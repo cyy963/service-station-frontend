@@ -2,22 +2,40 @@
   margin-bottom: 20px;
 }
 
-.addressSection {
+.storeDetails h1 {
+  font-size: 3.5rem; /* station name */
+  margin-bottom: 40px; 
+  margin-top: 50px;
+  margin-left: 80px;
+}
+
+.addressContainer {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+  margin-left: 80px; 
 }
 
 .address {
   font-weight: bold;
+  font-size: 0.9rem; 
+  margin-right: 60px; 
+  max-width: 200px; 
+  white-space: normal; /* wrapping */
 }
 
-.directionsButton {
+.getDirectionsButton {
+  display: flex;
+  align-items: center;
   background: linear-gradient(to right, #ED560E, #FFA13A);
   border: none;
-  border-radius: 20px;
   color: white;
   padding: 10px 20px;
+  border-radius: 20px;
   cursor: pointer;
-  font-weight: bold;
+}
+
+.getDirectionsButton svg {
+  margin-left: 10px;
+  font-size: 1.5rem; 
 }

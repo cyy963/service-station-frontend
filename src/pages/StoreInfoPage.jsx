@@ -58,6 +58,7 @@ import FuelPrices from "../components/StoreInfo/FuelPrices";
 import StoreHours from "../components/StoreInfo/StoreHours";
 import ServicesSection from "../components/StoreInfo/ServicesSection";
 import InfoColumns from "../components/StoreInfo/InfoColumns";
+import AdditionalSection from "../components/StoreInfo/AdditionalSection";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -104,14 +105,19 @@ const StoreInfoPage = () => {
           <div className={styles.leftSide}>
             <StoreDetails store={store} />
             <FuelPrices store={store} />
+            <StoreHours store={store} />
           </div>
           <div className={styles.rightSide}>
             <MapSection store={store} />
-            <StoreHours store={store} />
           </div>
         </div>
         <div className={styles.bottomSection}>
           <ServicesSection />
+          <div className={styles.additionalSectionContainer}>
+            <AdditionalSection />
+          </div>
+        </div>
+        <div className={styles.infoColumns}>
           <InfoColumns />
         </div>
       </div>
@@ -121,3 +127,6 @@ const StoreInfoPage = () => {
 };
 
 export default StoreInfoPage;
+
+
+

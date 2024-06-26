@@ -4,7 +4,7 @@ import styles from "./MapSection.module.css";
 
 const containerStyle = {
   width: "100%",
-  height: "400px",
+  height: "600px",
 };
 
 const MapSection = ({ store }) => {

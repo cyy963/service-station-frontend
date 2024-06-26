@@ -1,119 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
 .storeInfoPage {
+  font-family: "Inter", sans-serif; 
   padding: 20px;
-  background-color: #f9f9f9;
+  margin: 0 40px; 
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .topSection {
   display: flex;
+  justify-content: space-between;
 }
 
 .leftSide {
-  flex: 1;
-  padding: 20px;
+  width: 50%;
 }
 
 .rightSide {
-  flex: 1;
-  padding: 20px;
+  width: 50%;
 }
 
 .bottomSection {
   display: flex;
   justify-content: space-between;
-}
-
-.storeDetails {
-  margin-bottom: 20px;
-}
-
-.addressSection {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.address {
-  font-weight: bold;
-}
-
-.directionsButton {
-  background: linear-gradient(to right, #ED560E, #FFA13A);
-  border: none;
-  border-radius: 20px;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.fuelPrices {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-}
-
-.fuelType {
-  text-align: center;
-}
-
-.mapContainer {
-  margin-bottom: 20px;
-}
-
-.storeHours {
-  margin-top: 20px;
-}
-
-.servicesSection {
-  margin-top: 20px;
-}
-
-.servicesTitle {
-  color: #ED560E;
-}
-
-.findOutMoreButton {
-  background: linear-gradient(to right, #ED560E, #FFA13A);
-  border: none;
-  border-radius: 20px;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.servicesList {
-  margin-top: 20px;
-}
-
-.serviceItem {
-  margin-bottom: 20px;
-}
-
-.serviceDetail {
-  color: blue;
+  align-items: flex-start;
 }
 
 .infoColumns {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
-.infoColumn {
-  flex: 1;
-  margin: 0 10px;
-}
-
-.infoHeader {
-  color: blue;
-  font-weight: bold;
-}
-
-.downloadButton,
-.learnMoreButton {
-  background: linear-gradient(to right, #ED560E, #FFA13A);
-  border: none;
-  border-radius: 20px;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
+/* Additional Section */
+.additionalSectionContainer {
+  width: 50%; /* same width right side to align with left edge of map */
 }

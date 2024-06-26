@@ -4,7 +4,7 @@ import styles from "./StoreHours.module.css";
 const StoreHours = ({ store }) => {
   return (
     <div className={styles.storeHours}>
-      <h2>Store Hours</h2>
+      <h2>Station Hours</h2>
       <p>{store.hours}</p>
     </div>
   );

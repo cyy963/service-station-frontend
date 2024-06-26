@@ -96,22 +96,35 @@
 // };
 
 // export default StoreDetails;
-
 import React from "react";
 import styles from "./StoreDetails.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const StoreDetails = ({ store }) => {
   return (
     <div className={styles.storeDetails}>
       <h1>{store.name}</h1>
-      <div className={styles.addressSection}>
+      <div className={styles.addressContainer}>
         <p className={styles.address}>{store.address}</p>
-        <button className={styles.directionsButton}>Get directions</button>
+        <button className={styles.getDirectionsButton}>
+          Get directions
+          <FontAwesomeIcon
+            icon={faCircleArrowRight}
+            style={{ color: "white", marginLeft: "10px" }}
+          />
+        </button>
       </div>
     </div>
   );
 };
 
 export default StoreDetails;
+
+
+
+
+
+
 
 
