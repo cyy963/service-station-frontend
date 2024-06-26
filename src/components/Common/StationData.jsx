@@ -12,64 +12,6 @@ import FiltersBar from './FiltersBar'
 import Banner from '../FindStation/Banner'
 import MapContent from '../FindStation/MapContent'
 
-const stations3 = [
-  {
-    name: 'Z Mt Eden',
-    address: '400 Dominion Road, Mt Eden, Auckland',
-    hours: 'Monday-Sunday 24/7',
-    services:
-      "Pre-order Coffee, Pay in app, Z Espress Coffee & Fresh Food, Pay at pump, Bathrooms, LPG SWAP'n'GO, EV Charging",
-    ZX_Premium: 2.669,
-    Z91_Unleaded: 1.982,
-    Z_Diesel: 1.987,
-    position: { lat: -36.8743, lng: 174.7596 },
-  },
-  {
-    name: 'Z Newmarket',
-    address: '286 Broadway, Newmarket, Auckland',
-    hours: 'Monday-Sunday 24/7',
-    services:
-      "Pre-order Coffee, Pay in app, Z Espress Coffee & Fresh Food, Pay at pump, Bathrooms, LPG SWAP'n'GO, Trailer Hire",
-    ZX_Premium: 2.675,
-    Z91_Unleaded: 1.985,
-    Z_Diesel: 1.995,
-    position: { lat: -36.8667, lng: 174.778 },
-  },
-  {
-    name: 'Z Parnell',
-    address: '153 Parnell Road, Parnell, Auckland',
-    hours: 'Monday-Sunday 6:00am - 10:00pm',
-    services:
-      "Pre-order Coffee, Pay in app, Z Espress Coffee & Fresh Food, Pay at pump, Bathrooms, LPG SWAP'n'GO, Flybuys",
-    ZX_Premium: 2.67,
-    Z91_Unleaded: 1.98,
-    Z_Diesel: 1.975,
-    position: { lat: -36.855, lng: 174.7825 },
-  },
-  {
-    name: 'Z Ponsonby',
-    address: '28 College Hill, Ponsonby, Auckland',
-    hours: 'Monday-Sunday 6:00am - 10:00pm',
-    services:
-      "Pre-order Coffee, Pay in app, Z Espress Coffee & Fresh Food, Pay at pump, Bathrooms, LPG SWAP'n'GO, EV Charging",
-    ZX_Premium: 2.669,
-    Z91_Unleaded: 1.982,
-    Z_Diesel: 1.987,
-    position: { lat: -36.8509, lng: 174.7483 },
-  },
-  {
-    name: 'Z Quay Street',
-    address: '108 Quay Street, Auckland CBD, Auckland',
-    hours: 'Monday-Sunday 6:00am - 10:00pm',
-    services:
-      "Pre-order Coffee, Pay in app, Z Espress Coffee & Fresh Food, Pay at pump, Bathrooms, LPG SWAP'n'GO, Flybuys",
-    ZX_Premium: 2.675,
-    Z91_Unleaded: 1.985,
-    Z_Diesel: 1.995,
-    position: { lat: -36.8441, lng: 174.7669 },
-  },
-]
-
 const StationData = () => {
   const [stations, setStations] = useState([])
   const [dropdownStates, setDropdownStates] = useState({})
@@ -88,18 +30,16 @@ const StationData = () => {
 
   const [filteredStations, setFilteredStations] = useState([])
   useEffect(() => {
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await axios.get('http://localhost:3000/api/stations')
-    //     setStations(response.data)
-    //   } catch (error) {
-    //     console.error('Error fetching the stations data', error)
-    //   }
-    // }
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/stations')
+        setStations(response.data)
+      } catch (error) {
+        console.error('Error fetching the stations data', error)
+      }
+    }
 
-    // fetchData()
-
-    setStations(stations3)
+    fetchData()
   }, [])
 
   const toggleDropdown = (stationId) => {
