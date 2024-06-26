@@ -23,7 +23,7 @@ function MapContent({
   return (
     <>
       <Map
-        style={{ width: '100vw', height: '80vh' }}
+        style={{ width: '50vw', height: '800px' }}
         defaultCenter={{ lat: -36.84, lng: 174.76 }}
         defaultZoom={10}
         gestureHandling='greedy'

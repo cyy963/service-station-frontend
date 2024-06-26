@@ -1,0 +1,65 @@
+.priceSorter {
+  width: 150px;
+  height: 40px;
+  position: absolute;
+  right: 52.5%;
+  top: 675px;
+  z-index: 1000;
+}
+
+.dropdownSelect {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  font-weight: 600;
+  font-size: 16px;
+  border: 1px solid #353535;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #737579;
+  cursor: pointer;
+  z-index: 50;
+}
+
+.dropdownSelect:hover {
+  border: 1px solid #d11313;
+}
+
+.dropdownOptions {
+  position: absolute;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.dropdownOption {
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+.dropdownOption:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdownOption.disabled {
+  color: #ccc;
+  cursor: default;
+  background-color: #e0e0e0;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.placeholderIcon {
+  margin-left: 5px;
+  width: 15px; /* Adjust size as needed */
+  height: auto; /* Adjust size as needed */
+}

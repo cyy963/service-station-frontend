@@ -1,20 +1,27 @@
+.filterDataMap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
 
 .bg{
   display: flex;
   justify-content: flex-end;
-  width: 45%;
-  height: 1100px;
-  
+  width: 50vw;
+  height: 800px;
+
 }
 .stationsContainer{
-  height: 1000px;
-  width: 620px;
+  height: 100%;
+  width: 100%;
   overflow-y: scroll;
   
-  padding: 0px 30px 30px;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
 }
 /* scrollbar */
 .stationsContainer::-webkit-scrollbar {
@@ -32,20 +39,39 @@
 
 .stationsContainer *{
   font-family: "Inter", sans-serif;
-  
-  
+  position: relative;
+}
+.stationCount{
+  position: absolute;
+  top: 620px;
+  left: 4vw;
+  font-weight: 600;
+  z-index: 10999;
+  color: black;
 }
 .station {
-  margin-bottom: 20px;
-  border-bottom: 0.2px solid #585967;
-  padding-bottom: 20px;
+  border-bottom: 1px solid #9ea0b15d;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  padding: 20px 4vw;
 }
-
+.station.selected{
+  background-color: #ffcbb775;
+}
 .name{
   color: #1E196A;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+}
+.name:hover{
+  border-bottom: 2px solid #1E196A;
+  cursor: pointer;
+  width: fit-content;
+  
 }
 .address{
   font-weight: 600;
@@ -122,12 +148,7 @@
   color: #000000;
 }
 
-
-.dataMap{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 img{
   width: 55%;
 }
+
