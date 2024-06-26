@@ -19,6 +19,9 @@ function Directions({ journey, filterStations, chosenStation, allStations }) {
 
   const [directionRenderer, setDirectionRenderer] = useState()
 
+  const routeProximityThreshold = 0.01
+  const routePointFrequency = 5
+
   useEffect(() => {
     if (!routesLib || !map || !journey) return
     setJourneyPath(journey)
@@ -82,14 +85,16 @@ function Directions({ journey, filterStations, chosenStation, allStations }) {
     if (!path) return
 
     const reducedPath = path.routes[0].overview_path.filter(
-      (_, i) => i % 10 === 0
+      (_, i) => i % routePointFrequency === 0
     )
 
     const filterMarks = allStations.filter(({ position }) => {
       return reducedPath.some((point) => {
         const latDiff = Math.abs(point.lat() - position.lat)
         const lngDiff = Math.abs(point.lng() - position.lng)
-        return latDiff < 0.01 && lngDiff < 0.01
+        return (
+          latDiff < routeProximityThreshold && lngDiff < routeProximityThreshold
+        )
       })
     })
     //set filtered stations
@@ -100,7 +105,7 @@ function Directions({ journey, filterStations, chosenStation, allStations }) {
       if (chosenStation?.lat == station.position.lat) {
         const markerContent = document.createElement('div')
         const root = createRoot(markerContent)
-        root.render(<MarkerContent />)
+        root.render(<MarkerContent station={station} />)
         return new window.google.maps.marker.AdvancedMarkerElement({
           position: station.position,
           map: map,

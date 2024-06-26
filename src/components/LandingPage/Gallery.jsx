@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Gallery.module.css';
 
-import gallery1 from '../../assets/gallery1.png';
-import gallery2 from '../../assets/gallery2.jpg';
-import gallery3 from '../../assets/gallery3.jpg';
+import OG from '../../assets/gallery1.png';
+import zWhiteBG from '../../assets/zWhiteBG.jpg';
+import zElectric from '../../assets/zElectric.jpg';
 
-const images = [gallery1, gallery2, gallery3];
+const images = [OG, zWhiteBG, zElectric];
 
 const Gallery = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -30,10 +30,12 @@ const Gallery = () => {
 
   return (
     <div className={styles.gallery}>
-      <div className={styles.galleryText} >
-        <h1>Z is for<br/>New Zealand</h1>
-        <p>We're here to keep <br/>our communities <br/>and whānau moving</p>
-      </div>
+      {currentImageIndex === 0 && (
+        <div className={`${styles.galleryText} ${styles.slideIn}`}>
+          <h1>Z is for<br/>New Zealand</h1>
+          <p>We're here to keep <br/>our communities <br/>and whānau moving</p>
+        </div>
+      )}
       {prevImageIndex !== null && (
         <img
           key={`prev-${animationKey}`}

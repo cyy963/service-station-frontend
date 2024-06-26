@@ -1,21 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './FiltersBar.module.css';
 import CustomDropdown from './CustomDropdown';
 
-const FiltersBar = ({
-  serviceFilter,
-  stationTypeFilter,
-  fuelTypeFilter,
-  priceSort,
-  handleServiceFilterChange,
-  handleStationTypeFilterChange,
-  handleFuelTypeFilterChange,
-  handlePriceSortChange,
-}) => {
+const FiltersBar = ({ handleApplyFilters, handleClearFilters }) => {
+  const [tempServiceFilter, setTempServiceFilter] = useState([]);
+  const [tempStationTypeFilter, setTempStationTypeFilter] = useState('');
+  const [tempFuelTypeFilter, setTempFuelTypeFilter] = useState('');
+
   const serviceOptions = [
-    { value: '', label: 'Select service/s' },
     { value: 'Car wash', label: 'Car wash', disabled: true },
-    { value: 'Z20 carwash', label: 'Food & Drink' },
+    { value: 'Z20 carwash', label: 'Z20 carwash' },
     { value: 'Food & Drink', label: 'Food & Drink', disabled: true },
     { value: 'Pre-order Coffee', label: 'Pre-order Coffee' },
     { value: 'Z Espress Coffee & Fresh Food', label: 'Z Espress Coffee & Fresh Food' },
@@ -42,23 +36,30 @@ const FiltersBar = ({
   ];
 
   const stationTypeOptions = [
-    { value: '', label: 'Select station type' },
-    { value: 'Truck Stop', label: 'Truck Stop' },
-    { value: 'Service Station', label: 'Service Station' },
+    { value: 'truck stop', label: 'Truck Stop' },
+    { value: 'service station', label: 'Service Station' },
   ];
 
   const fuelTypeOptions = [
-    { value: '', label: 'Select fuel type' },
-    { value: 'ZX Premium', label: 'ZX Premium' },
-    { value: 'Z91 Unleaded', label: 'Z91 Unleaded' },
-    { value: 'Z Diesel', label: 'Z Diesel' },
+    { value: 'ZX_Premium', label: 'ZX Premium' },
+    { value: 'Z91_Unleaded', label: 'Z91 Unleaded' },
+    { value: 'Z_Diesel', label: 'Z Diesel' },
   ];
 
-  const priceSortOptions = [
-    { value: '', label: 'Sorted by price' },
-    { value: 'Lower price', label: 'Lower price' },
-    { value: 'Higher price', label: 'Higher price' },
-  ];
+  const applyFilters = () => {
+    handleApplyFilters({
+      serviceFilter: tempServiceFilter,
+      stationTypeFilter: tempStationTypeFilter,
+      fuelTypeFilter: tempFuelTypeFilter,
+    });
+  };
+
+  const clearFilters = () => {
+    setTempServiceFilter([]);
+    setTempStationTypeFilter('');
+    setTempFuelTypeFilter('');
+    handleClearFilters();
+  };
 
   return (
     <div className={styles.filtersContainer}>
@@ -66,34 +67,40 @@ const FiltersBar = ({
         <p className={styles.filterTitle}>Services</p>
         <CustomDropdown 
           options={serviceOptions} 
-          value={serviceFilter} 
-          onChange={handleServiceFilterChange} 
+          value={tempServiceFilter} 
+          onChange={setTempServiceFilter} 
+          placeholder={'Select service/s '}
+          retainSelected={true}
+          className={styles.servicesFilter}
         />
       </div>
       <div>
         <p className={styles.filterTitle}>Station type</p>
         <CustomDropdown
           options={stationTypeOptions} 
-          value={stationTypeFilter} 
-          onChange={handleStationTypeFilterChange}  
+          value={tempStationTypeFilter} 
+          onChange={setTempStationTypeFilter}  
+          placeholder={'Select station type '}
+          retainSelected={false}
+          className={styles.stationTypeFilter}
         />
       </div>
       <div>
         <p className={styles.filterTitle}>Fuel Type</p>
         <CustomDropdown 
           options={fuelTypeOptions} 
-          value={fuelTypeFilter} 
-          onChange={handleFuelTypeFilterChange} 
+          value={tempFuelTypeFilter} 
+          onChange={setTempFuelTypeFilter} 
+          placeholder={'Select fuel type'}
+          retainSelected={false}
         />
-      </div>      
-      <CustomDropdown
-        className={styles.priceSorter}
-        options={priceSortOptions} 
-        value={priceSort} 
-        onChange={handlePriceSortChange} 
-        
-      />
-      
+      </div>
+      <button className={styles.applyButton} onClick={applyFilters}>
+        Apply Filters
+      </button>
+      <button className={styles.clearButton} onClick={clearFilters}>
+        Clear Filters
+      </button>
     </div>
   );
 };
