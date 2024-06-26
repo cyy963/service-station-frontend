@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import { Map, AdvancedMarker } from '@vis.gl/react-google-maps'
-
 import Directions from './Directions'
 import Marks from './Marks'
-import SideBar from './SideBar'
 
 function MapContent({
   form,
