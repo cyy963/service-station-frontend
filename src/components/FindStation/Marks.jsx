@@ -16,7 +16,7 @@ function Marks({ chosenStation, allStations }) {
       if (chosenStation?.lat == station.position.lat) {
         const markerContent = document.createElement('div')
         const root = createRoot(markerContent)
-        root.render(<MarkerContent />)
+        root.render(<MarkerContent station={station} />)
         return new window.google.maps.marker.AdvancedMarkerElement({
           position: station.position,
           map: map,

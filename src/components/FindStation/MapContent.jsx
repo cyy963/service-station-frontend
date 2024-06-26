@@ -1,15 +1,19 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react'
-import { Map, AdvancedMarker } from '@vis.gl/react-google-maps'
 
+import { Map, AdvancedMarker } from '@vis.gl/react-google-maps'
 import Directions from './Directions'
 import Marks from './Marks'
-import SideBar from './SideBar'
 
-function MapContent({ form, tog, searchAddress, setAddress, allStations }) {
-  const [selectedStation, setSelectedStation] = useState()
-  const [filteredStations, setFilteredStations] = useState([])
-
+function MapContent({
+  form,
+  tog,
+  searchAddress,
+  setAddress,
+  allStations,
+  setFilteredStations,
+  setSelectedStation,
+  selectedStation,
+}) {
   function resetCenter() {
     setSelectedStation(null)
     setAddress(null)
@@ -42,14 +46,6 @@ function MapContent({ form, tog, searchAddress, setAddress, allStations }) {
           <div></div>
         </AdvancedMarker>
       </Map>
-      {tog ? (
-        <SideBar
-          stationSelector={setSelectedStation}
-          stations={filteredStations}
-        />
-      ) : (
-        <SideBar stationSelector={setSelectedStation} stations={allStations} />
-      )}
     </>
   )
 }

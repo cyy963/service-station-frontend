@@ -11,37 +11,24 @@ import FiltersBar from "./FiltersBar";
 import Banner from "../FindStation/Banner";
 import MapContent from "../FindStation/MapContent";
 
-const stations2 = [
-  {
-    name: "northshore 1",
-    position: {
-      lat: -36.8088951976568,
-      lng: 174.73808064878497,
-    },
-  },
-  {
-    name: "northshore 2",
-    position: { lat: -36.79013435905915, lng: 174.74687215436307 },
-  },
-  {
-    name: "mt roskill ",
-    position: { lat: -36.906357360934656, lng: 174.7723480293113 },
-  },
-];
-
-const StationData = ({ onStationClick }) => {
-  const [stations, setStations] = useState([]);
-  const [dropdownStates, setDropdownStates] = useState({});
-  const [hoursDropdownStates, setHoursDropdownStates] = useState({});
-  const [serviceFilter, setServiceFilter] = useState("");
-  const [stationTypeFilter, setStationTypeFilter] = useState("");
-  const [fuelTypeFilter, setFuelTypeFilter] = useState("");
-  const [priceSort, setPriceSort] = useState("");
+const StationData = () => {
+  const [stations, setStations] = useState([])
+  const [dropdownStates, setDropdownStates] = useState({})
+  const [hoursDropdownStates, setHoursDropdownStates] = useState({})
+  const [serviceFilter, setServiceFilter] = useState('')
+  const [stationTypeFilter, setStationTypeFilter] = useState('')
+  const [fuelTypeFilter, setFuelTypeFilter] = useState('')
+  const [priceSort, setPriceSort] = useState('')
 
   //----map------//
-  const [form, setForm] = useState();
-  const [tog, setTog] = useState(true);
-  const [searchAddress, setSearchAddress] = useState();
+  const [form, setForm] = useState()
+  const [tog, setTog] = useState(false)
+  const [searchAddress, setSearchAddress] = useState()
+  const [selectedStation, setSelectedStation] = useState()
+  const [filterStations, setFilterStations] = useState([])
+
+  const [filteredStations, setFilteredStations] = useState([])
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,43 +73,67 @@ const StationData = ({ onStationClick }) => {
     setPriceSort(value);
   };
 
-  const filteredStations = stations
-    .filter((station) => {
-      // Filter by service
-      if (serviceFilter) {
-        const servicesArray = station.services
-          .split(",")
-          .map((service) => service.trim());
-        if (!servicesArray.includes(serviceFilter)) {
-          return false;
+
+  function applyAllFilters(stationArray) {
+    return stationArray
+      .filter((station) => {
+        // Filter by service
+        if (serviceFilter) {
+          const servicesArray = station.services
+            .split(',')
+            .map((service) => service.trim())
+          if (!servicesArray.includes(serviceFilter)) {
+            return false
+          }
         }
-      }
-      // Filter by station type
-      if (stationTypeFilter && station.type !== stationTypeFilter) {
-        return false;
-      }
-      // Filter by fuel type
-      if (fuelTypeFilter) {
-        const fuelTypes = [
-          station.ZX_Premium,
-          station.Z91_Unleaded,
-          station.Z_Diesel,
-        ];
-        if (!fuelTypes.includes(fuelTypeFilter)) {
-          return false;
+        // Filter by station type
+        if (stationTypeFilter && station.type !== stationTypeFilter) {
+          return false
         }
-      }
-      return true;
-    })
-    .sort((a, b) => {
-      if (priceSort === "Lower price") {
-        return a.ZX_Premium - b.ZX_Premium; // Change to the desired fuel type for sorting
-      } else if (priceSort === "Higher price") {
-        return b.ZX_Premium - a.ZX_Premium; // Change to the desired fuel type for sorting
+        // Filter by fuel type
+        if (fuelTypeFilter) {
+          const fuelTypes = [
+            station.ZX_Premium,
+            station.Z91_Unleaded,
+            station.Z_Diesel,
+          ]
+          if (!fuelTypes.includes(fuelTypeFilter)) {
+            return false
+          }
+        }
+        return true
+      })
+      .sort((a, b) => {
+        if (priceSort === 'Lower price') {
+          return a.ZX_Premium - b.ZX_Premium // Change to the desired fuel type for sorting
+        } else if (priceSort === 'Higher price') {
+          return b.ZX_Premium - a.ZX_Premium // Change to the desired fuel type for sorting
+        } else {
+          return 0
+        }
+      })
+  }
+
+  useEffect(() => {
+    if (tog) {
+      if (filteredStations && filteredStations.length > 0) {
+        setFilterStations(applyAllFilters(filteredStations))
       } else {
-        return 0;
+        setFilterStations(applyAllFilters(stations))
       }
-    });
+    } else {
+      setFilterStations(applyAllFilters(stations))
+    }
+  }, [
+    filteredStations,
+    stations,
+    fuelTypeFilter,
+    priceSort,
+    serviceFilter,
+    stationTypeFilter,
+    tog,
+  ])
+
 
   return (
     <div className={styles.dataMap}>
@@ -145,14 +156,17 @@ const StationData = ({ onStationClick }) => {
       />
       <div style={{ display: "flex" }}>
         <div className={styles.bg}>
-          <div className={styles.stationsContainer}>
-            {filteredStations.map((station) => (
-              <div
-                className={styles.station}
-                key={station._id}
-                onClick={() => onStationClick(station._id)}
-              >
-                <h2 className={styles.name}>{station.name}</h2>
+          <div className={styles.stationsContainer}
+
+            {filterStations.map((station) => (
+              <div className={styles.station} key={station._id}>
+                <h2
+                  className={styles.name}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setSelectedStation(station.position)}
+                >
+                  {station.name}
+                </h2>
                 <p className={styles.address}>{station.address}</p>
                 <p className={styles.hoursContainer}>{station.hours}</p>
                 <div className={styles.dropdown}>
@@ -205,7 +219,10 @@ const StationData = ({ onStationClick }) => {
         </div>
 
         <MapContent
-          allStations={stations2}
+          setFilteredStations={setFilteredStations}
+          setSelectedStation={setSelectedStation}
+          selectedStation={selectedStation}
+          allStations={stations}
           form={form}
           tog={tog}
           searchAddress={searchAddress}
