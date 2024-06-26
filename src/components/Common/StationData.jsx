@@ -12,23 +12,22 @@ import Banner from "../FindStation/Banner";
 import MapContent from "../FindStation/MapContent";
 
 const StationData = () => {
-  const [stations, setStations] = useState([])
-  const [dropdownStates, setDropdownStates] = useState({})
-  const [hoursDropdownStates, setHoursDropdownStates] = useState({})
-  const [serviceFilter, setServiceFilter] = useState('')
-  const [stationTypeFilter, setStationTypeFilter] = useState('')
-  const [fuelTypeFilter, setFuelTypeFilter] = useState('')
-  const [priceSort, setPriceSort] = useState('')
+  const [stations, setStations] = useState([]);
+  const [dropdownStates, setDropdownStates] = useState({});
+  const [hoursDropdownStates, setHoursDropdownStates] = useState({});
+  const [serviceFilter, setServiceFilter] = useState('');
+  const [stationTypeFilter, setStationTypeFilter] = useState('');
+  const [fuelTypeFilter, setFuelTypeFilter] = useState('');
+  const [priceSort, setPriceSort] = useState('');
 
   //----map------//
-  const [form, setForm] = useState()
-  const [tog, setTog] = useState(false)
-  const [searchAddress, setSearchAddress] = useState()
-  const [selectedStation, setSelectedStation] = useState()
-  const [filterStations, setFilterStations] = useState([])
+  const [form, setForm] = useState();
+  const [tog, setTog] = useState(false);
+  const [searchAddress, setSearchAddress] = useState();
+  const [selectedStation, setSelectedStation] = useState();
+  const [filterStations, setFilterStations] = useState([]);
 
-  const [filteredStations, setFilteredStations] = useState([])
-
+  const [filteredStations, setFilteredStations] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,7 +72,6 @@ const StationData = () => {
     setPriceSort(value);
   };
 
-
   function applyAllFilters(stationArray) {
     return stationArray
       .filter((station) => {
@@ -81,14 +79,14 @@ const StationData = () => {
         if (serviceFilter) {
           const servicesArray = station.services
             .split(',')
-            .map((service) => service.trim())
+            .map((service) => service.trim());
           if (!servicesArray.includes(serviceFilter)) {
-            return false
+            return false;
           }
         }
         // Filter by station type
         if (stationTypeFilter && station.type !== stationTypeFilter) {
-          return false
+          return false;
         }
         // Filter by fuel type
         if (fuelTypeFilter) {
@@ -96,33 +94,33 @@ const StationData = () => {
             station.ZX_Premium,
             station.Z91_Unleaded,
             station.Z_Diesel,
-          ]
+          ];
           if (!fuelTypes.includes(fuelTypeFilter)) {
-            return false
+            return false;
           }
         }
-        return true
+        return true;
       })
       .sort((a, b) => {
         if (priceSort === 'Lower price') {
-          return a.ZX_Premium - b.ZX_Premium // Change to the desired fuel type for sorting
+          return a.ZX_Premium - b.ZX_Premium; // Change to the desired fuel type for sorting
         } else if (priceSort === 'Higher price') {
-          return b.ZX_Premium - a.ZX_Premium // Change to the desired fuel type for sorting
+          return b.ZX_Premium - a.ZX_Premium; // Change to the desired fuel type for sorting
         } else {
-          return 0
+          return 0;
         }
-      })
+      });
   }
 
   useEffect(() => {
     if (tog) {
       if (filteredStations && filteredStations.length > 0) {
-        setFilterStations(applyAllFilters(filteredStations))
+        setFilterStations(applyAllFilters(filteredStations));
       } else {
-        setFilterStations(applyAllFilters(stations))
+        setFilterStations(applyAllFilters(stations));
       }
     } else {
-      setFilterStations(applyAllFilters(stations))
+      setFilterStations(applyAllFilters(stations));
     }
   }, [
     filteredStations,
@@ -132,8 +130,7 @@ const StationData = () => {
     serviceFilter,
     stationTypeFilter,
     tog,
-  ])
-
+  ]);
 
   return (
     <div className={styles.dataMap}>
@@ -156,8 +153,7 @@ const StationData = () => {
       />
       <div style={{ display: "flex" }}>
         <div className={styles.bg}>
-          <div className={styles.stationsContainer}
-
+          <div className={styles.stationsContainer}>
             {filterStations.map((station) => (
               <div className={styles.station} key={station._id}>
                 <h2
