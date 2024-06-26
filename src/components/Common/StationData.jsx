@@ -12,21 +12,61 @@ import FiltersBar from './FiltersBar'
 import Banner from '../FindStation/Banner'
 import MapContent from '../FindStation/MapContent'
 
-const stations2 = [
+const stations3 = [
   {
-    name: 'northshore 1',
-    position: {
-      lat: -36.8088951976568,
-      lng: 174.73808064878497,
-    },
+    name: 'Z Mt Eden',
+    address: '400 Dominion Road, Mt Eden, Auckland',
+    hours: 'Monday-Sunday 24/7',
+    services:
+      "Pre-order Coffee, Pay in app, Z Espress Coffee & Fresh Food, Pay at pump, Bathrooms, LPG SWAP'n'GO, EV Charging",
+    ZX_Premium: 2.669,
+    Z91_Unleaded: 1.982,
+    Z_Diesel: 1.987,
+    position: { lat: -36.8743, lng: 174.7596 },
   },
   {
-    name: 'northshore 2',
-    position: { lat: -36.79013435905915, lng: 174.74687215436307 },
+    name: 'Z Newmarket',
+    address: '286 Broadway, Newmarket, Auckland',
+    hours: 'Monday-Sunday 24/7',
+    services:
+      "Pre-order Coffee, Pay in app, Z Espress Coffee & Fresh Food, Pay at pump, Bathrooms, LPG SWAP'n'GO, Trailer Hire",
+    ZX_Premium: 2.675,
+    Z91_Unleaded: 1.985,
+    Z_Diesel: 1.995,
+    position: { lat: -36.8667, lng: 174.778 },
   },
   {
-    name: 'mt roskill ',
-    position: { lat: -36.906357360934656, lng: 174.7723480293113 },
+    name: 'Z Parnell',
+    address: '153 Parnell Road, Parnell, Auckland',
+    hours: 'Monday-Sunday 6:00am - 10:00pm',
+    services:
+      "Pre-order Coffee, Pay in app, Z Espress Coffee & Fresh Food, Pay at pump, Bathrooms, LPG SWAP'n'GO, Flybuys",
+    ZX_Premium: 2.67,
+    Z91_Unleaded: 1.98,
+    Z_Diesel: 1.975,
+    position: { lat: -36.855, lng: 174.7825 },
+  },
+  {
+    name: 'Z Ponsonby',
+    address: '28 College Hill, Ponsonby, Auckland',
+    hours: 'Monday-Sunday 6:00am - 10:00pm',
+    services:
+      "Pre-order Coffee, Pay in app, Z Espress Coffee & Fresh Food, Pay at pump, Bathrooms, LPG SWAP'n'GO, EV Charging",
+    ZX_Premium: 2.669,
+    Z91_Unleaded: 1.982,
+    Z_Diesel: 1.987,
+    position: { lat: -36.8509, lng: 174.7483 },
+  },
+  {
+    name: 'Z Quay Street',
+    address: '108 Quay Street, Auckland CBD, Auckland',
+    hours: 'Monday-Sunday 6:00am - 10:00pm',
+    services:
+      "Pre-order Coffee, Pay in app, Z Espress Coffee & Fresh Food, Pay at pump, Bathrooms, LPG SWAP'n'GO, Flybuys",
+    ZX_Premium: 2.675,
+    Z91_Unleaded: 1.985,
+    Z_Diesel: 1.995,
+    position: { lat: -36.8441, lng: 174.7669 },
   },
 ]
 
@@ -41,20 +81,25 @@ const StationData = () => {
 
   //----map------//
   const [form, setForm] = useState()
-  const [tog, setTog] = useState(true)
+  const [tog, setTog] = useState(false)
   const [searchAddress, setSearchAddress] = useState()
+  const [selectedStation, setSelectedStation] = useState()
+  const [filterStations, setFilterStations] = useState([])
 
+  const [filteredStations, setFilteredStations] = useState([])
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/api/stations')
-        setStations(response.data)
-      } catch (error) {
-        console.error('Error fetching the stations data', error)
-      }
-    }
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await axios.get('http://localhost:3000/api/stations')
+    //     setStations(response.data)
+    //   } catch (error) {
+    //     console.error('Error fetching the stations data', error)
+    //   }
+    // }
 
-    fetchData()
+    // fetchData()
+
+    setStations(stations3)
   }, [])
 
   const toggleDropdown = (stationId) => {
@@ -87,43 +132,65 @@ const StationData = () => {
     setPriceSort(value)
   }
 
-  const filteredStations = stations
-    .filter((station) => {
-      // Filter by service
-      if (serviceFilter) {
-        const servicesArray = station.services
-          .split(',')
-          .map((service) => service.trim())
-        if (!servicesArray.includes(serviceFilter)) {
+  function applyAllFilters(stationArray) {
+    return stationArray
+      .filter((station) => {
+        // Filter by service
+        if (serviceFilter) {
+          const servicesArray = station.services
+            .split(',')
+            .map((service) => service.trim())
+          if (!servicesArray.includes(serviceFilter)) {
+            return false
+          }
+        }
+        // Filter by station type
+        if (stationTypeFilter && station.type !== stationTypeFilter) {
           return false
         }
-      }
-      // Filter by station type
-      if (stationTypeFilter && station.type !== stationTypeFilter) {
-        return false
-      }
-      // Filter by fuel type
-      if (fuelTypeFilter) {
-        const fuelTypes = [
-          station.ZX_Premium,
-          station.Z91_Unleaded,
-          station.Z_Diesel,
-        ]
-        if (!fuelTypes.includes(fuelTypeFilter)) {
-          return false
+        // Filter by fuel type
+        if (fuelTypeFilter) {
+          const fuelTypes = [
+            station.ZX_Premium,
+            station.Z91_Unleaded,
+            station.Z_Diesel,
+          ]
+          if (!fuelTypes.includes(fuelTypeFilter)) {
+            return false
+          }
         }
-      }
-      return true
-    })
-    .sort((a, b) => {
-      if (priceSort === 'Lower price') {
-        return a.ZX_Premium - b.ZX_Premium // Change to the desired fuel type for sorting
-      } else if (priceSort === 'Higher price') {
-        return b.ZX_Premium - a.ZX_Premium // Change to the desired fuel type for sorting
+        return true
+      })
+      .sort((a, b) => {
+        if (priceSort === 'Lower price') {
+          return a.ZX_Premium - b.ZX_Premium // Change to the desired fuel type for sorting
+        } else if (priceSort === 'Higher price') {
+          return b.ZX_Premium - a.ZX_Premium // Change to the desired fuel type for sorting
+        } else {
+          return 0
+        }
+      })
+  }
+
+  useEffect(() => {
+    if (tog) {
+      if (filteredStations && filteredStations.length > 0) {
+        setFilterStations(applyAllFilters(filteredStations))
       } else {
-        return 0
+        setFilterStations(applyAllFilters(stations))
       }
-    })
+    } else {
+      setFilterStations(applyAllFilters(stations))
+    }
+  }, [
+    filteredStations,
+    stations,
+    fuelTypeFilter,
+    priceSort,
+    serviceFilter,
+    stationTypeFilter,
+    tog,
+  ])
 
   return (
     <div className={styles.dataMap}>
@@ -133,6 +200,13 @@ const StationData = () => {
         setTog={setTog}
         setForm={setForm}
       />
+      <button
+        onClick={() => {
+          console.log(tog, stations)
+        }}
+      >
+        check
+      </button>
 
       <FiltersBar
         serviceFilter={serviceFilter}
@@ -147,9 +221,15 @@ const StationData = () => {
       <div style={{ display: 'flex' }}>
         <div className={styles.bg}>
           <div className={styles.stationsContainer}>
-            {filteredStations.map((station) => (
+            {filterStations.map((station) => (
               <div className={styles.station} key={station._id}>
-                <h2 className={styles.name}>{station.name}</h2>
+                <h2
+                  className={styles.name}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setSelectedStation(station.position)}
+                >
+                  {station.name}
+                </h2>
                 <p className={styles.address}>{station.address}</p>
                 <p className={styles.hoursContainer}>{station.hours}</p>
                 <div className={styles.dropdown}>
@@ -202,7 +282,10 @@ const StationData = () => {
         </div>
 
         <MapContent
-          allStations={stations2}
+          setFilteredStations={setFilteredStations}
+          setSelectedStation={setSelectedStation}
+          selectedStation={selectedStation}
+          allStations={stations}
           form={form}
           tog={tog}
           searchAddress={searchAddress}
