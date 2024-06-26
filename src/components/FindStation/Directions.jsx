@@ -19,7 +19,8 @@ function Directions({ journey, filterStations, chosenStation, allStations }) {
 
   const [directionRenderer, setDirectionRenderer] = useState()
 
-  const threshold = 0.004
+  const routeProximityThreshold = 0.01
+  const routePointFrequency = 5
 
   useEffect(() => {
     if (!routesLib || !map || !journey) return
@@ -84,14 +85,16 @@ function Directions({ journey, filterStations, chosenStation, allStations }) {
     if (!path) return
 
     const reducedPath = path.routes[0].overview_path.filter(
-      (_, i) => i % 10 === 0
+      (_, i) => i % routePointFrequency === 0
     )
 
     const filterMarks = allStations.filter(({ position }) => {
       return reducedPath.some((point) => {
         const latDiff = Math.abs(point.lat() - position.lat)
         const lngDiff = Math.abs(point.lng() - position.lng)
-        return latDiff < threshold && lngDiff < threshold
+        return (
+          latDiff < routeProximityThreshold && lngDiff < routeProximityThreshold
+        )
       })
     })
     //set filtered stations
