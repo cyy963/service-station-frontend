@@ -23,39 +23,42 @@ const MapSection = ({ store }) => {
     loader
       .load()
       .then(() => {
-        if (store && mapRef.current) {
-          const lat = parseFloat(store.latitude);
-          const lng = parseFloat(store.longitude);
+        if (store && store.position && mapRef.current) {
+          console.log("Store data in MapSection:", store);
+          const lat = parseFloat(store.position.lat);
+          const lng = parseFloat(store.position.lng);
 
-          if (!isNaN(lat) && !isNaN(lng)) {
-            const position = { lat, lng };
-
-            if (!mapInstanceRef.current) {
-              mapInstanceRef.current = new window.google.maps.Map(
-                mapRef.current,
-                {
-                  center: position,
-                  zoom: 15,
-                  mapId: "DEMO_MAP_ID",
-                }
-              );
-
-              google.maps
-                .importLibrary("marker")
-                .then(({ AdvancedMarkerElement }) => {
-                  markerRef.current = new AdvancedMarkerElement({
-                    map: mapInstanceRef.current,
-                    position: position,
-                    title: store.name,
-                  });
-                });
-            } else {
-              mapInstanceRef.current.setCenter(position);
-              markerRef.current.position = position;
-              markerRef.current.title = store.name;
-            }
-          } else {
+          console.log("Parsed latitude and longitude:", lat, lng);
+          if (isNaN(lat) || isNaN(lng)) {
             console.error("Invalid latitude or longitude values:", lat, lng);
+            return;
+          }
+
+          const position = { lat, lng };
+
+          if (!mapInstanceRef.current) {
+            mapInstanceRef.current = new window.google.maps.Map(
+              mapRef.current,
+              {
+                center: position,
+                zoom: 15,
+                mapId: "DEMO_MAP_ID",
+              }
+            );
+
+            google.maps
+              .importLibrary("marker")
+              .then(({ AdvancedMarkerElement }) => {
+                markerRef.current = new AdvancedMarkerElement({
+                  map: mapInstanceRef.current,
+                  position: position,
+                  title: store.name,
+                });
+              });
+          } else {
+            mapInstanceRef.current.setCenter(position);
+            markerRef.current.position = position;
+            markerRef.current.title = store.name;
           }
         }
       })
