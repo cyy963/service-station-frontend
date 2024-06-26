@@ -1,16 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import styles from './StationData.module.css'
-import downArrow from '../../assets/downArrow.png'
-import rightArrow from '../../assets/rightArrow.png'
-import greenZ from '../../assets/greenZ.png'
-import redZ from '../../assets/redZ.png'
-import blackZ from '../../assets/blackZ.png'
-import FiltersBar from './FiltersBar'
-
-import Banner from '../FindStation/Banner'
-import MapContent from '../FindStation/MapContent'
+import { useState, useEffect } from "react";
+import axios from "axios";
+import styles from "./StationData.module.css";
+import downArrow from "../../assets/downArrow.png";
+import rightArrow from "../../assets/rightArrow.png";
+import greenZ from "../../assets/greenZ.png";
+import redZ from "../../assets/redZ.png";
+import blackZ from "../../assets/blackZ.png";
+import FiltersBar from "./FiltersBar";
+import Banner from "../FindStation/Banner";
+import MapContent from "../FindStation/MapContent";
 
 const StationData = () => {
   const [stations, setStations] = useState([])
@@ -30,48 +29,50 @@ const StationData = () => {
 
   const [filteredStations, setFilteredStations] = useState([])
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/stations')
-        setStations(response.data)
+        const response = await axios.get("http://localhost:3000/api/stations");
+        setStations(response.data);
       } catch (error) {
-        console.error('Error fetching the stations data', error)
+        console.error("Error fetching the stations data", error);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   const toggleDropdown = (stationId) => {
     setDropdownStates((prevStates) => ({
       ...prevStates,
       [stationId]: !prevStates[stationId],
-    }))
-  }
+    }));
+  };
 
   const toggleHoursDropdown = (stationId) => {
     setHoursDropdownStates((prevStates) => ({
       ...prevStates,
       [stationId]: !prevStates[stationId],
-    }))
-  }
+    }));
+  };
 
   const handleServiceFilterChange = (value) => {
-    setServiceFilter(value)
-  }
+    setServiceFilter(value);
+  };
 
   const handleStationTypeFilterChange = (value) => {
-    setStationTypeFilter(value)
-  }
+    setStationTypeFilter(value);
+  };
 
   const handleFuelTypeFilterChange = (value) => {
-    setFuelTypeFilter(value)
-  }
+    setFuelTypeFilter(value);
+  };
 
   const handlePriceSortChange = (value) => {
-    setPriceSort(value)
-  }
+    setPriceSort(value);
+  };
+
 
   function applyAllFilters(stationArray) {
     return stationArray
@@ -133,6 +134,7 @@ const StationData = () => {
     tog,
   ])
 
+
   return (
     <div className={styles.dataMap}>
       <Banner
@@ -152,9 +154,10 @@ const StationData = () => {
         handleFuelTypeFilterChange={handleFuelTypeFilterChange}
         handlePriceSortChange={handlePriceSortChange}
       />
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: "flex" }}>
         <div className={styles.bg}>
-          <div className={styles.stationsContainer}>
+          <div className={styles.stationsContainer}
+
             {filterStations.map((station) => (
               <div className={styles.station} key={station._id}>
                 <h2
@@ -174,12 +177,12 @@ const StationData = () => {
                     Services
                     <img
                       src={dropdownStates[station._id] ? downArrow : rightArrow}
-                      alt='arrow icon'
+                      alt="arrow icon"
                     />
                   </button>
                   {dropdownStates[station._id] && (
                     <div className={styles.servicesContainer}>
-                      {station.services.split(',').map((service, index) => (
+                      {station.services.split(",").map((service, index) => (
                         <div key={index} className={styles.service}>
                           {service.trim()}
                         </div>
@@ -192,21 +195,21 @@ const StationData = () => {
                     ZX Premium
                     <br />
                     <span className={styles.premPrice}>
-                      <img src={redZ} alt='redZ' />${station.ZX_Premium}
+                      <img src={redZ} alt="redZ" />${station.ZX_Premium}
                     </span>
                   </p>
                   <p className={styles.unleaded}>
                     Z91 Unleaded
                     <br />
                     <span className={styles.unleadPrice}>
-                      <img src={greenZ} alt='greenZ' />${station.Z91_Unleaded}
+                      <img src={greenZ} alt="greenZ" />${station.Z91_Unleaded}
                     </span>
                   </p>
                   <p className={styles.diesel}>
                     Z Diesel
                     <br />
                     <span className={styles.dieselPrice}>
-                      <img src={blackZ} alt='blackZ' />${station.Z_Diesel}
+                      <img src={blackZ} alt="blackZ" />${station.Z_Diesel}
                     </span>
                   </p>
                 </div>
@@ -227,7 +230,7 @@ const StationData = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StationData
+export default StationData;
