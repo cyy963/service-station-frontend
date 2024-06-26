@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import styles from './FiltersBar.module.css';
 import CustomDropdown from './CustomDropdown';
 
-const FiltersBar = ({
-  handleApplyFilters,
-  handleClearFilters
-}) => {
+const FiltersBar = ({ handleApplyFilters, handleClearFilters }) => {
   const [tempServiceFilter, setTempServiceFilter] = useState([]);
   const [tempStationTypeFilter, setTempStationTypeFilter] = useState('');
   const [tempFuelTypeFilter, setTempFuelTypeFilter] = useState('');
@@ -51,8 +48,6 @@ const FiltersBar = ({
     { value: 'Z Diesel', label: 'Z Diesel' },
   ];
 
-
-
   const applyFilters = () => {
     handleApplyFilters({
       serviceFilter: tempServiceFilter,
@@ -76,8 +71,9 @@ const FiltersBar = ({
           options={serviceOptions} 
           value={tempServiceFilter} 
           onChange={setTempServiceFilter} 
-          placeholder={'Select service/s'}
+          placeholder={'Select service/s '}
           retainSelected={true}
+          className={styles.servicesFilter}
         />
       </div>
       <div>
@@ -86,8 +82,9 @@ const FiltersBar = ({
           options={stationTypeOptions} 
           value={tempStationTypeFilter} 
           onChange={setTempStationTypeFilter}  
-          placeholder={'Select station type'}
+          placeholder={'Select station type '}
           retainSelected={false}
+          className={styles.stationTypeFilter}
         />
       </div>
       <div>

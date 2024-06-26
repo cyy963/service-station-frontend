@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './CustomDropdown.module.css';
 
+import filterArrow from '../../assets/filterArrow.png'
+
 const CustomDropdown = ({ options, value, onChange, className, placeholder, retainSelected }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValues, setSelectedValues] = useState(value || []);
@@ -66,7 +68,10 @@ const CustomDropdown = ({ options, value, onChange, className, placeholder, reta
             );
           })
         ) : (
-          placeholder
+          <span className={styles.placeholder}>
+            {placeholder}
+            <img src={filterArrow} alt="icon" className={styles.placeholderIcon} />
+          </span>
         )}
       </div>
       <div className={`${styles.dropdownOptions} ${isOpen ? styles.visible : ''}`}>

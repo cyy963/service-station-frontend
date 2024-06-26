@@ -139,7 +139,7 @@ const StationData = () => {
     })
 
   return (
-    <div className={styles.dataMap}>
+    <div className={styles.filterDataMap}>
       <Banner
         setAddress={setSearchAddress}
         tog={tog}

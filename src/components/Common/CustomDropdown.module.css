@@ -1,7 +1,7 @@
 .dropdown {
   height: fit-content;
   min-height: 56px;
-  width: 270px;
+  min-width: 200px;
   position: relative;
 }
 
@@ -21,6 +21,9 @@
   background-color: #fff;
   color: #737579;
   cursor: pointer;
+}
+.dropdownSelect:hover{
+  border: 1px solid #d11313;
 }
 .selectedOptionRetained {
   display: flex;
@@ -72,4 +75,17 @@
   cursor: default;
   background-color: #575757;
   padding: 8px 10px;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.placeholderIcon {
+  margin-left: 5px;
+  width: 15px; /* Adjust size as needed */
+  height: auto; /* Adjust size as needed */
 }

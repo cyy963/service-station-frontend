@@ -1,14 +1,8 @@
 .priceSorter {
-  width: 170px;
-  height: 30px;
+  width: 150px;
+  height: 40px;
   position: absolute;
-  right: 0;
-}
-
-.dropdown {
-  height: 30px;
-  width: 100%;
-  position: relative;
+  right: 5px;
 }
 
 .dropdownSelect {
@@ -18,27 +12,27 @@
   padding: 8px 10px;
   font-weight: 600;
   font-size: 18px;
-  border: 1px solid #d11313;
+  border: 1px solid #353535;
   border-radius: 10px;
   background-color: #fff;
   color: #737579;
   cursor: pointer;
+  z-index: 50;
+}
+
+.dropdownSelect:hover {
+  border: 1px solid #d11313;
 }
 
 .dropdownOptions {
-  display: none;
   position: absolute;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fff;
-  max-height: fit-content;
+  max-height: 200px;
   overflow-y: auto;
-  z-index: 50;
-}
-
-.dropdownOptions.visible {
-  display: block;
+  z-index: 100;
 }
 
 .dropdownOption {
