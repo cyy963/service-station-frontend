@@ -1,0 +1,27 @@
+.additionalSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+.sectionHeading {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.sectionContent {
+  margin-bottom: 5px;
+  color: #3129ac;
+  font-weight: bold;
+}
+
+.inlineContent {
+  display: flex;
+  gap: 60px; /* space between inline items */
+  flex-wrap: wrap;
+}

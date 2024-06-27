@@ -1,3 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
 .storeInfoPage {
+  font-family: "Inter", sans-serif; 
   padding: 20px;
+  margin: 0 40px; 
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftSide {
+  width: 50%;
+}
+
+.rightSide {
+  width: 50%;
+}
+
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.infoColumns {
+  margin-top: 20px;
+}
+
+/* Additional Section */
+.additionalSectionContainer {
+  width: 50%; /* same width right side to align with left edge of map */
 }
