@@ -112,18 +112,19 @@ const StationData = ({ onStationClick }) => {
     if (tog) {
       if (filteredStations && filteredStations.length > 0) {
         setFilterStations(applyAllFilters(filteredStations))
+        return
       }
-    }
-    if (!tog && searchAddress) {
+    } else if (searchAddress) {
       const filterMarks = stations.filter(({ position }) => {
         const latDiff = Math.abs(searchAddress.lat - position.lat)
         const lngDiff = Math.abs(searchAddress.lng - position.lng)
         return latDiff < 0.05 && lngDiff < 0.05
       })
       setFilterStations(applyAllFilters(filterMarks))
-    } else {
-      setFilterStations(applyAllFilters(stations))
+      return
     }
+
+    setFilterStations(applyAllFilters(stations))
   }, [
     filteredStations,
     stations,
