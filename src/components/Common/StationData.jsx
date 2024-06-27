@@ -131,7 +131,6 @@ const StationData = ({ onStationClick }) => {
   function handleSelectStation({ position, _id }) {
     setSelectedStation(position);
     setSelectedStationId(_id);
-    onStationClick(_id); // to call the onStationClick prop
   }
 
   return (
@@ -173,7 +172,10 @@ const StationData = ({ onStationClick }) => {
                 key={station._id}
                 onClick={() => handleSelectStation(station)}
               >
-                <h2 className={styles.name}>
+                <h2
+                  className={styles.name}
+                  onClick={() => onStationClick(station._id)}
+                >
                   {station.name} <FaExternalLinkAlt style={{ scale: "0.8" }} />
                 </h2>
                 <p className={styles.address}>{station.address}</p>
