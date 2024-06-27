@@ -139,7 +139,6 @@ const StationData = ({ onStationClick }) => {
         setTog={setTog}
         setForm={setForm}
       />
-      <button onClick={() => console.log('stations', stations)}>check</button>
 
       <FiltersBar
         handleApplyFilters={handleApplyFilters}
