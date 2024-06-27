@@ -37,10 +37,15 @@ function MapContent({
             journey={form}
             filterStations={setFilteredStations}
             chosenStation={selectedStation}
+            setChosenStation={setSelectedStation}
             allStations={allStations}
           />
         ) : (
-          <Marks chosenStation={selectedStation} allStations={allStations} />
+          <Marks
+            chosenStation={selectedStation}
+            allStations={allStations}
+            setChosenStation={setSelectedStation}
+          />
         )}
         <AdvancedMarker position={selectedStation}>
           <div></div>
