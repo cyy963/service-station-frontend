@@ -7,7 +7,13 @@ import { createRoot } from 'react-dom/client'
 
 import MarkerContent from './MarkerContent'
 
-function Directions({ journey, filterStations, chosenStation, allStations }) {
+function Directions({
+  journey,
+  filterStations,
+  chosenStation,
+  allStations,
+  setChosenStation,
+}) {
   const map = useMap()
   const routesLib = useMapsLibrary('routes')
 
@@ -112,14 +118,17 @@ function Directions({ journey, filterStations, chosenStation, allStations }) {
           content: markerContent,
         })
       } else {
-        return new window.google.maps.Marker({
+        const marker = new window.google.maps.Marker({
           position: station.position,
           map: map,
           icon: {
             url: '/images/label.png',
             scaledSize: new window.google.maps.Size(30, 40),
           },
+          clickable: true,
         })
+        marker.addListener('click', () => setChosenStation(station.position))
+        return marker
       }
     })
 

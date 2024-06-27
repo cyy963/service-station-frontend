@@ -6,7 +6,7 @@ import MarkerContent from './MarkerContent'
 
 import { useMap } from '@vis.gl/react-google-maps'
 
-function Marks({ chosenStation, allStations }) {
+function Marks({ chosenStation, allStations, setChosenStation }) {
   const map = useMap()
 
   useEffect(() => {
@@ -24,14 +24,17 @@ function Marks({ chosenStation, allStations }) {
           //visible: false,
         })
       } else {
-        return new window.google.maps.Marker({
+        const marker = new window.google.maps.Marker({
           position: station.position,
           map: map,
           icon: {
             url: '/images/label.png',
             scaledSize: new window.google.maps.Size(30, 40),
           },
+          clickable: true,
         })
+        marker.addListener('click', () => setChosenStation(station.position))
+        return marker
       }
     })
 
