@@ -24,7 +24,21 @@ This is a project based on Z, a fuel provider in New Zealand. It allows users to
    ```sh
    npm run dev
    ```
+## Project Structure
 
+- `public/`: Static assets.
+- `src/`: Source files for the project.
+  - `assets/`: Images etc.
+  - `components/`: Reusable components.
+    - `Common/`: Common components like Header and Footer.
+    - `FindStation/`: Components for the "Find a Station" page.
+    - `JourneyPlanner/`: Components for the "Journey Planner" page.
+    - `StoreInformation/`: Components for the "Store Information" page.
+    - `LandingPage/`: Components for the landing page.
+  - `pages/`: Page components.
+  - `App.jsx`: Main application component with routing.
+  - `main.jsx`: Entry point for the application.
+    
 ## Notes
 
 - **React Router v6:** Ensure that you are using `react-router-dom` v6, as the routing setup is based on this version.
