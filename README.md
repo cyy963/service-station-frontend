@@ -29,8 +29,8 @@ This is a project based on Z, a fuel provider in New Zealand. It allows users to
 
 1. **Clone the Repository:**
    ```sh
-   git clone https://github.com/SarahC233/m5-frontend.git
-   cd m5-frontend
+   git clone https://github.com/cyy963/service-station-frontend
+   cd service-station-frontend
    ```
 
 2. **Install Dependencies:**
@@ -42,7 +42,6 @@ This is a project based on Z, a fuel provider in New Zealand. It allows users to
    ```sh
    npm run dev
    ```
-   The application should now be running at http://localhost:5173
 
 ## Branching Workflow
 
