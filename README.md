@@ -4,7 +4,6 @@ This is a project based on Z, a fuel provider in New Zealand. It allows users to
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
 - npm (v6 or higher)
 
 ### Installation
