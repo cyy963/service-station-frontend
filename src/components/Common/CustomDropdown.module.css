@@ -55,7 +55,7 @@
   background-color: #fff;
   max-height: fit-content;
   overflow-y: auto;
-  z-index: 100;
+  z-index: 9999;
 }
 
 .dropdownOptions.visible {

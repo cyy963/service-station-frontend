@@ -46,7 +46,7 @@
   top: 620px;
   left: 4vw;
   font-weight: 600;
-  z-index: 10999;
+  z-index: 999;
   color: black;
 }
 .station {

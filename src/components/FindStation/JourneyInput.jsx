@@ -40,7 +40,7 @@ function JourneyInput({ setForm }) {
         </div>
         <div className={styles.buttonContainer}>
           <button className={styles.submitButton} onClick={onSubmit}>
-            enter
+            Plan
           </button>
         </div>
       </form>

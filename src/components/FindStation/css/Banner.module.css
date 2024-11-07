@@ -1,11 +1,9 @@
 
 
 .banner {
-  height: 340px;
+  height: 320px;
   width: 100%;
-  background-image: url('/images/banner.jpg');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(90deg, rgba(236,86,14,1) 0%, rgba(251,142,48,1) 35%, rgba(254,203,8,1) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Ensure content is aligned at the start */
@@ -14,10 +12,8 @@
 }
 
 .content{
-  padding: 20px;
+  padding: 30px 6vw;
   flex-wrap: wrap;
-  margin-left: 6vw;
-
 }
 .buttons {
   display: flex;
@@ -45,7 +41,10 @@
   }
   
   .submitButton {
-    height: 5vh;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 20px;
     background-color: #ED560E;
     color: #FFFFFF;
@@ -57,8 +56,8 @@
   }
 
 .searchInput {
-  width: 40vw;
-  height: 5vh;
+  width: 70vw;
+  height: 8vh;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
@@ -66,7 +65,10 @@
 }
 
 .stationButton {
-  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 9vh;
   font-size: 20px;
   background-color: #ED560E; 
   color: #FFFFFF;
